@@ -1,0 +1,12 @@
+div#man{
+  position: relative;
+  left:10%;
+}
+div#woman{
+  position: relative;
+  left:20%;
+}
+div#kid{
+  position: relative;
+  left:40%;
+}
