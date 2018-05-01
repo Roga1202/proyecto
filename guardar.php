@@ -33,6 +33,8 @@
 			$query->bindParam(':PR_cantidad',$PR_cantidad);
 			$query->bindParam(':PR_precio',$PR_precio);
 
+			var_dump($PR_precio);
+
 			$result = $query->execute();
 
 		//Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
