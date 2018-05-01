@@ -1,24 +1,7 @@
-<?php
-	require_once 'conexion.php';
+	<?php
+		require_once 'conexion.php';
 
-
-	if(!empty($_POST)){
-		$PR_referencia=$_POST['referencia'];
-		$PR_nombre=$_POST['nombre'];
-		$PR_clientela=$_POST['clientela'];
-		$PR_categoria=$_POST['categoria'];
-		$PR_talla=$_POST['talla'];
-		$PR_color=$_POST['color'];
-		$PR_marca=$_POST['marca'];
-		$PR_material=$_POST['material'];
-		$PR_descripcion=$_POST['descripcion'];
-		$PR_cantidad=$_POST['cantidad'];
-		$PR_precio=$_POST['precio'];
-
-		$sql = "INSERT INTO producto (PR_referencia, PR_usuario, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca,   PR_material, PR_descripcion, PR_cantidad, PR_precio) VALUES ('$PR_referencia', current_user(), NOW(), '$PR_nombre','$PR_clientela', '$PR_categoria', '$PR_talla', '$PR_color', '$PR_marca', '$PR_material', '$PR_descripcion', '$PR_cantidad', '$PR_precio')";
-		$query = $pdo->prepare($sql);
-
-		$result = $query->execute([
+		if(!empty($_POST)){
 			$PR_referencia=$_POST['referencia'];
 			$PR_nombre=$_POST['nombre'];
 			$PR_clientela=$_POST['clientela'];
@@ -30,8 +13,27 @@
 			$PR_descripcion=$_POST['descripcion'];
 			$PR_cantidad=$_POST['cantidad'];
 			$PR_precio=$_POST['precio'];
+			$PR_inicio=date("Y-m-d H:i:s");
+			$PR_usuario='root';
 
-		]);
+			$sql = "INSERT INTO producto (PR_referencia, PR_usuario, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio) VALUES (:PR_referencia, :PR_usuario, :PR_inicio, :PR_nombre,:PR_clientela, :PR_categoria, :PR_talla, :PR_color, :PR_marca, :PR_material, :PR_descripcion, :PR_cantidad, :$PR_precio)";
+			$query = $pdo->prepare($sql);
+
+			$query->bindParam(':PR_referencia',$PR_referencia);
+			$query->bindParam(':PR_usuario',$PR_usuario);
+			$query->bindParam(':PR_inicio',$PR_inicio);
+			$query->bindParam(':PR_nombre',$PR_nombre);
+			$query->bindParam(':PR_clientela',$PR_clientela);
+			$query->bindParam(':PR_categoria',$PR_categoria);
+			$query->bindParam(':PR_talla',$PR_talla);
+			$query->bindParam(':PR_color',$PR_color);
+			$query->bindParam(':PR_marca',$PR_marca);
+			$query->bindParam(':PR_material',$PR_material);
+			$query->bindParam(':PR_descripcion',$PR_descripcion);
+			$query->bindParam(':PR_cantidad',$PR_cantidad);
+			$query->bindParam(':PR_precio',$PR_precio);
+
+			$result = $query->execute();
 
 		//Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
 		foreach($_FILES["archivo"]['tmp_name'] as $key => $tmp_name)

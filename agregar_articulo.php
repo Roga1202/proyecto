@@ -80,7 +80,7 @@
 				</a>
 				</div>
 			</div>
-			
+
 			<h2><center>Agregar articulo.</center></h2>
 			<form name="req_art" class="form-horizontal" method="POST" enctype="multipart/form-data" action="guardar.php" autocomplete="off">
 
@@ -177,7 +177,7 @@
 			<div class="form-group">
 				<label for="precio" class="col-sm-2 control-label">Precio por unidad</label>
 				<div class="col-sm-10">
-					<p><input type="number" name="precio" required="required" placeholder="00,00">Bsf</p>
+					<p><input type="number" step="0.01" name="precio" required="required" placeholder="00,00">Bsf</p>
 				</div>
 			</div>
 
