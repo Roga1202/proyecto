@@ -1,7 +1,7 @@
-<!-- <?php
+<?php
 	require_once '../private/conexion.php';
 
-?> -->
+?>
 <html lang="es">
 	<head>
 		<title>El Surtidor-Administracion de articulos</title>
