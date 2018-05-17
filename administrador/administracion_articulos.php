@@ -1,5 +1,5 @@
 <?php
-	require_once '../private/conexion.php';
+	require_once '../settings/sql/conexion.php';
 
 ?>
 <html lang="es">
@@ -7,13 +7,13 @@
 		<title>El Surtidor-Administracion de articulos</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
-		<link href="css/jquery.dataTables.min.css" rel="stylesheet">
-		<script src="js/jquery-3.1.1.min.js"></script>
-		<script src="js/jquery.dataTables.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link rel="shortcut icon" href="images/ico.png">
+		<link rel="stylesheet" href="../public/css/bootstrap.css">
+		<link rel="stylesheet" href="../public/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="../public/css/jquery.dataTables.min.css" rel="stylesheet">
+		<script src="../public/js/jquery-3.1.1.min.js"></script>
+		<script src="../public/js/jquery.dataTables.min.js"></script>
+		<script src="../public/js/bootstrap.min.js"></script>
+		<link rel="shortcut icon" href="../public/images/ico.png">
 		<script>
 			$(document).ready(function(){
 				$('#mitabla').DataTable({
@@ -34,7 +34,7 @@
 					},
 					"bProcessing": true,
 					"bServerSide": true,
-					"sAjaxSource": "server_process.php"
+					"sAjaxSource": "../settings/script/server_process.php"
 				});
 			});
 		</script>
@@ -159,7 +159,7 @@
 		<br>
 	<footer class="footer">
 		<<?php
-	 		require_once 'footer.php';
+	 		require_once '../public/footer.php';
 		 ?>
 	</footer>
 </body>

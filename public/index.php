@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/margen.css">
 	<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
 	<script src="js/jquery-3.2.1.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -29,6 +28,7 @@
 			  <li><a href="informacion.php">¿Quienes Somos?</a></li>
 			  <li><a href="inscripcion.php">Articulos</a></li>
 			  <li><a href="sucursales.php">Sucursales</a></li>
+			  <li><a href="inicio_sesion.php">Iniciar Sesion</a></li>
 			</ul>
 		  </div>
 		</nav>

@@ -1,5 +1,5 @@
 <?php
-  require_once 'C:\xampp\htdocs\Vista_ElSurtidor\private\conexion.php';
+  require_once '../sql/conexion.php';
 
   class producto{
 
@@ -71,7 +71,7 @@
          $filename = $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
          $source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
 
-         $directorio = 'C:/xampp/htdocs/Vista_ElSurtidor/private/base_de_datos/files/' . $this->referencia . '/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
+         $directorio = '../../archivos/files/' . $this->referencia . '/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
 
          //Validamos si la ruta de destino existe, en caso de no existir la creamos
          if(!file_exists($directorio)){
@@ -99,7 +99,7 @@
     global $pdo;
     $sql = "UPDATE producto SET PR_referencia= '$this->referencia' , PR_usuario='$this->usuario', PR_inicio='$this->inicio', PR_nombre='$this->nombre', PR_clientela='$this->clientela', PR_categoria='$this->categoria', PR_talla='$this->talla',PR_color='$this->color', PR_marca='$this->marca', PR_material='$this->material', PR_descripcion='$this->descripcion', PR_cantidad= '$this->cantidad', PR_precio='$this->precio', PR_foto='$this->foto' WHERE PR_ID ='$this->id'";
     $query=$pdo->prepare($sql);
-    
+
     $this->result=$query->execute([
     ':PR_referencia'=>$this->referencia,
     ':PR_usuario'=> $this->usuario,

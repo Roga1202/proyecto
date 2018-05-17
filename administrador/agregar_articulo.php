@@ -3,14 +3,14 @@
 	<title>El Surtidor-Administracion de articulos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="images/ico.	png" />
-	<script language="javascript" src="js/jquery-1.2.6.min.js"></script>
+	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="../public/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="../public/js/jquery-3.1.1.min.js"></script>
+	<script src="../public/js/jquery.dataTables.min.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../public/images/ico.png">
+	<script language="javascript" src="../public/js/jquery-1.2.6.min.js"></script>
 	<!--combobox clientela-categoria-->
 	<script language="javascript">
 	$(document).ready(function(){
@@ -92,7 +92,7 @@
 			</div>
 
 			<h2><center>Agregar articulo.</center></h2>
-			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="../private/guardar.php" autocomplete="off">
+			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="../settings/sql/save.php" autocomplete="off">
   			<br>
 
 			<div class="form-group">

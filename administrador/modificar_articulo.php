@@ -1,5 +1,5 @@
 <?php
-	require 'C:\xampp\htdocs\Vista_ElSurtidor\private\conexion.php';
+	require '../settings/sql/conexion.php';
 
 	$referencia= $_GET['referencia'];
 
@@ -8,21 +8,19 @@
 	$row = $resultado->fetch(MYSQLI_ASSOC);
 
 ?>
-<!DOCTYPE html PUBLIC>
 <html>
 <head>
 	<title>El Surtidor-Administracion de articulos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="images/ico.	png" />
-
-	<script language="javascript" src="js/jquery-1.2.6.min.js"></script>
+	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="../public/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="../public/js/jquery-3.1.1.min.js"></script>
+	<script src="../public/js/jquery.dataTables.min.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../public/images/ico.png">
+	<script language="javascript" src="../public/js/jquery-1.2.6.min.js"></script>
 	<!--combobox clientela-categoria-->
 	<script language="javascript">
 	$(document).ready(function(){
@@ -114,7 +112,7 @@
 		<div class="row">
   			<div class="col-md-12">
   				<h2><center>Modificar Articulo</center></h2>
-  				<form name="actualizar_articulo" class="form-horizontal" method="POST" enctype="multipart/form-data" action="../private/actualizacion_articulo.php" autocomplete="off">
+  				<form name="actualizar_articulo" class="form-horizontal" method="POST" enctype="multipart/form-data" action="../settings/sql/update.php" autocomplete="off">
 
 				<div class="row" style="margin-left: 5%;">
 		  			<div class="col-md-12">
@@ -254,7 +252,7 @@
 						<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/ required>
 
 						<?php
-						$path = "C:/xampp/htdocs/Vista_ElSurtidor/private/base_de_datos/files/".$referencia;
+						$path = "../archivos/files/".$referencia;
 						if(file_exists($path)){
 							$directorio = opendir($path);
 							while ($archivo = readdir($directorio))
@@ -262,7 +260,7 @@
 								if (!is_dir($archivo)){
 									echo "<div data='".$path."/".$archivo."'><a href='".$path."/".$archivo."' title='Ver Archivo Adjunto'><span class='glyphicon glyphicon-picture'></span></a>";
 									echo "$archivo <a href='#' class='delete' title='Borrar Archivo Adjunto' ><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a></div>";
-									echo "<img src='../private/base_de_datos/files/$referencia/$archivo' width='300' />";
+									echo "<img src='../archivos/files/$referencia/$archivo' width='300' />";
 								}
 							}
 						}
@@ -283,7 +281,7 @@
 	</div>
 	<footer class="footer">
 		<?php
-			require_once 'footer.php';
+			require_once '../public/footer.php';
 		?>
 	</footer>
 </body>

@@ -5,7 +5,7 @@
 		* License:   GPL v2 or BSD (3-point)
 	*/
 
-	require_once '../private/conexion.php';
+	require_once '../sql/conexion.php';
 
 	/* Nombre de La Tabla */
 	$sTabla = "producto";
@@ -130,7 +130,7 @@
 		}
 
 		$row[] = "<td><a href='modificar_articulo.php?referencia=".$aRow['PR_referencia']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		$row[] = "<td><a href='#' data-href='../private/eliminar_articulo.php?referencia=".$aRow['PR_referencia']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='#' data-href='../settings/sql/delete.php?referencia=".$aRow['PR_referencia']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
 
 		$output['aaData'][] = $row;
 	}

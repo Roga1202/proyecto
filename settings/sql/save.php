@@ -1,49 +1,49 @@
 	<?php
 		require_once 'conexion.php';
-		require_once 'base_de_datos/POO/producto.php';
+		require_once '../POO/producto.php';
 
 
 		if(!empty($_POST)){
-			$PR_ID= null;
-			$PR_referencia=$_POST['referencia'];
-			$PR_nombre=$_POST['nombre'];
-			$PR_clientela=$_POST['clientela'];
-			$PR_categoria=$_POST['categoria'];
+			$ID= null;
+			$referencia=$_POST['referencia'];
+			$nombre=$_POST['nombre'];
+			$clientela=$_POST['clientela'];
+			$categoria=$_POST['categoria'];
 			// Valo de talla sin arreglar
-			$PR_talla= isset($_POST['talla']) ? $_POST['talla'] : null;
+			$talla= isset($_POST['talla']) ? $_POST['talla'] : null;
 			//
 			// Valo de talla sin arreglar
-			$PR_foto= isset($_FILES["archivo"]['name']) ? $_FILES["archivo"]['name'] : null;
+			$foto= isset($_FILES["archivo"]['name']) ? $_FILES["archivo"]['name'] : null;
 			//
-			$PR_color=$_POST['color'];
-			$PR_marca=$_POST['marca'];
-			$PR_material=$_POST['material'];
-			$PR_descripcion=$_POST['descripcion'];
-			$PR_cantidad=$_POST['cantidad'];
-			$PR_precio=$_POST['precio'];
-			$PR_inicio=date("Y-m-d H:i:s");
-			$PR_usuario='root';
-			
-			require_once "arraytalla.php";
-			require_once "arrayfoto.php";
+			$color=$_POST['color'];
+			$marca=$_POST['marca'];
+			$material=$_POST['material'];
+			$descripcion=$_POST['descripcion'];
+			$cantidad=$_POST['cantidad'];
+			$precio=$_POST['precio'];
+			$inicio=date("Y-m-d H:i:s");
+			$usuario='root';
 
-			$producto= new Producto($PR_ID,$PR_referencia,$PR_usuario,$PR_inicio,$PR_nombre,$PR_clientela,$PR_categoria,$PR_arraytalla,$PR_color,$PR_marca,$PR_material,$PR_descripcion,$PR_cantidad,$PR_precio,$PR_arrayfoto);
+			require_once "../script/arraytalla.php";
+			require_once "../script/arrayfoto.php";
+
+			$producto= new Producto($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$arraytalla,$color,$marca,$material,$descripcion,$cantidad,$precio,$arrayfoto);
 			$producto->uploaded();
 	}
 ?>
-<!DOCTYPE html PUBLIC>
 <html>
 <head>
-	<title>El Surtidor</title>
+	<title>El Surtidor-Administracion de articulos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
-	<script src="js/jquery-3.2.1.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="images/ico.	png" />
+	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="../public/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="../public/js/jquery-3.1.1.min.js"></script>
+	<script src="../public/js/jquery.dataTables.min.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../public/images/ico.png">
+	<script language="javascript" src="../public/js/jquery-1.2.6.min.js"></script>
 	</head>
 
 

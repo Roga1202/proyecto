@@ -1,35 +1,35 @@
 <?php
-	require_once '../private/conexion.php';
-	require_once '../private/base_de_datos/POO/producto.php';
+	require_once 'conexion.php';
+	require_once '../POO/producto.php';
 
 	if(!empty($_POST)){
-		$PR_ID=$_POST['ID'];
-		$PR_referencia=$_POST['referencia'];
-		$PR_nombre=$_POST['nombre'];
-		$PR_clientela=$_POST['clientela'];
-		$PR_categoria=$_POST['categoria'];
+		$ID=$_POST['ID'];
+		$referencia=$_POST['referencia'];
+		$nombre=$_POST['nombre'];
+		$clientela=$_POST['clientela'];
+		$categoria=$_POST['categoria'];
 		// Valo de talla sin arreglar
-		$PR_talla= isset($_POST['talla']) ? $_POST['talla'] : null;
+		$talla= isset($_POST['talla']) ? $_POST['talla'] : null;
 		//
 		// Valo de talla sin arreglar
-		$PR_foto= isset($_FILES["archivo"]['name']) ? $_FILES["archivo"]['name'] : null;
+		$foto= isset($_FILES["archivo"]['name']) ? $_FILES["archivo"]['name'] : null;
 		//
-		$PR_color=$_POST['color'];
-		$PR_marca=$_POST['marca'];
-		$PR_material=$_POST['material'];
-		$PR_descripcion=$_POST['descripcion'];
-		$PR_cantidad=$_POST['cantidad'];
-		$PR_precio=$_POST['precio'];
-		$PR_inicio=date("Y-m-d H:i:s");
-		$PR_usuario='root';
+		$color=$_POST['color'];
+		$marca=$_POST['marca'];
+		$material=$_POST['material'];
+		$descripcion=$_POST['descripcion'];
+		$cantidad=$_POST['cantidad'];
+		$precio=$_POST['precio'];
+		$inicio=date("Y-m-d H:i:s");
+		$usuario='root';
 
 
-		require_once "arrayfoto.php";
-		require_once "arraytalla.php";
+		require_once "../script/arrayfoto.php";
+		require_once "../script/arraytalla.php";
 
-		$actualizacion_producto= new producto($PR_ID,$PR_referencia,$PR_usuario,$PR_inicio,$PR_nombre,$PR_clientela,$PR_categoria,$PR_arraytalla,$PR_color,$PR_marca,$PR_material,$PR_descripcion,$PR_cantidad,$PR_precio,$PR_arrayfoto);
+		$actualizacion_producto= new producto($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$arraytalla,$color,$marca,$material,$descripcion,$cantidad,$precio,$arrayfoto);
 		$actualizacion_producto->update();
-		// $sql = "UPDATE producto SET PR_referencia='$PR_referencia', usuario='$PR_usuario',fecha=$PR_inicio ,nom_art='$PR_nombre', user='$user', cat='$cat', precio='$precio',cant='$cant' WHERE ref = '$ref'";
+		// $sql = "UPDATE producto SET PR_referencia='$referencia', usuario='$PR_usuario',fecha=$PR_inicio ,nom_art='$nombre', user='$user', cat='$cat', precio='$precio',cant='$cant' WHERE ref = '$ref'";
 		// $resultado = $mysqli->query($sql);
 		// $id_insert= $ref;
 		}
@@ -69,7 +69,7 @@
 	</body>
 	<footer class="footer">
 		<?php
-			require_once '../public/footer.php';
+			require_once '../../public/footer.php';
 		?>
 	</footer>
 </html>

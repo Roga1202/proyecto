@@ -1,5 +1,5 @@
 <?php
-	require 'C:\xampp\htdocs\Vista_ElSurtidor\private\conexion.php';
+	require 'conexion.php';
 
 	$referencia=$_GET['referencia'];
 
@@ -10,7 +10,7 @@
 	]);
 
 
-	eliminarDir('C:/xampp/htdocs/Vista_ElSurtidor/private/base_de_datos/files/'.$referencia);
+	eliminarDir('../../archivos/files/'.$referencia);
 
 	function eliminarDir($carpeta)
 	{
@@ -60,10 +60,10 @@
 				</div>
 			</div>
 		</div>
+		<footer class="footer">
+			<?php
+				require_once '../../public/footer.php';
+			?>
+		</footer>
 	</body>
-	<footer class="footer">
-		<?php
-			require_once '../public/footer.php';
-		?>
-	</footer>
 </html>
