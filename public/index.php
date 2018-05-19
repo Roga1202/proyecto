@@ -1,3 +1,20 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+$route = $_GET['route'] ?? '/';
+
+switch ($route) {
+    case'/informacion.php':
+        require '../administrador/administracion_articulos.php';
+        break;
+    case'/admin/posts':
+        require '../admin/posts.php';
+        break;
+}
+?>
 <html>
 <head>
 	<title>El Surtidor</title>
@@ -107,4 +124,3 @@
 </footer>
 </body>
 </html>
-<!--akareliz@gmail.com-->

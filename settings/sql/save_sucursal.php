@@ -1,30 +1,23 @@
 <?php
   require_once 'conexion.php';
-  require_once '../POO/usuario.php';
+  require_once '../POO/sucursal.php';
 
 
   if(!empty($_POST)){
     $ID=null;
-    $primernombre=$_POST['first_name'];
-    $primerapellido=$_POST['last_name'];
-    $nacionalidad=$_POST['nacionalidad'];
-    $ci=$_POST['ci'];
-    $email=$_POST['email'];
-    $contrasena=$_POST['password'];
-    $confirmacioncontrasena=$_POST['password_confirmation'];
-    $pregunta=$_POST['pregunta'];
-    $respuesta=$_POST['respuesta'];
+    $nombre=$_POST['nombre'];
+    $latitud=$_POST['latitud'];
+    $longitud=$_POST['longitud'];
+    $reg_mer=$_POST['reg_mer'];
     $direccion=$_POST['direccion'];
-    $numero=$_POST['numero'];
+    $cupo_emp=$_POST['cupo_emp'];
+    $emp=$_POST['emp'];
+    $tlf=$_POST['tlf'];
     $inicio=date("Y-m-d H:i:s");
-    $CL_ID=1;
+    $usuario=1;
 
-
-    if($contrasena===$confirmacioncontrasena){
-      $cedula= $nacionalidad .= $ci;
-      $usuario= new usuario($ID,$primernombre,$primerapellido,$cedula,$email,$contrasena,$pregunta,$respuesta,$direccion,$numero,$inicio,$CL_ID);
-      $usuario->uploaded();
-    }
+    $sucursal= new sucursal($ID,$nombre,$latitud,$longitud,$reg_mer,$direccion,$inicio,$cupo_emp,$emp,$tlf,$usuario);
+    $sucursal->uploaded();
 }
 ?>
 <html>
@@ -66,7 +59,7 @@
   <div class="container">
     <div class="row">
       <div class="row" style="text-align:center">
-        <?php if($usuario->result) { ?>
+        <?php if($sucursal->result) { ?>
           <h3>REGISTRO GUARDADO</h3>
           <?php } else { ?>
           <h3>ERROR AL GUARDAR</h3>

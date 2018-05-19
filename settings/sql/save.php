@@ -22,7 +22,7 @@
 			$cantidad=$_POST['cantidad'];
 			$precio=$_POST['precio'];
 			$inicio=date("Y-m-d H:i:s");
-			$usuario='root';
+			$usuario=1;
 
 			require_once "../script/arraytalla.php";
 			require_once "../script/arrayfoto.php";

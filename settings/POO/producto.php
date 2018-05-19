@@ -42,11 +42,10 @@
 
   function uploaded(){
     global $pdo;
-    $sql = "INSERT INTO producto (PR_referencia, PR_usuario, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio, PR_foto) VALUES('$this->referencia', '$this->usuario', '$this->inicio', '$this->nombre', '$this->clientela', '$this->categoria', '$this->talla', '$this->color', '$this->marca', '$this->material', '$this->descripcion', '$this->cantidad', '$this->precio', '$this->foto')";
+    $sql = "INSERT INTO producto (PR_referencia, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio, PR_foto, AD_ID) VALUES('$this->referencia', '$this->inicio', '$this->nombre', '$this->clientela', '$this->categoria', '$this->talla', '$this->color', '$this->marca', '$this->material', '$this->descripcion', '$this->cantidad', '$this->precio', '$this->foto', '$this->usuario')";
     $query=$pdo->prepare($sql);
     $this->result=$query->execute([
     ':PR_referencia'=>$this->referencia,
-    ':PR_usuario'=> $this->usuario,
     ':PR_inicio'=> $this->inicio,
     ':PR_nombre'=> $this->nombre,
     ':PR_clientela'=> $this->clientela,
@@ -59,6 +58,7 @@
     ':PR_cantidad'=> $this->cantidad,
     ':PR_precio'=> $this->precio,
     ':PR_foto'=> $this->foto,
+    ':AD_ID'=> $this->usuario,
     ]);
 
     if($this->result){
@@ -97,12 +97,12 @@
   function update(){
 
     global $pdo;
-    $sql = "UPDATE producto SET PR_referencia= '$this->referencia' , PR_usuario='$this->usuario', PR_inicio='$this->inicio', PR_nombre='$this->nombre', PR_clientela='$this->clientela', PR_categoria='$this->categoria', PR_talla='$this->talla',PR_color='$this->color', PR_marca='$this->marca', PR_material='$this->material', PR_descripcion='$this->descripcion', PR_cantidad= '$this->cantidad', PR_precio='$this->precio', PR_foto='$this->foto' WHERE PR_ID ='$this->id'";
+    $sql = "UPDATE producto SET PR_referencia= '$this->referencia' , AD_ID='$this->usuario', PR_inicio='$this->inicio', PR_nombre='$this->nombre', PR_clientela='$this->clientela', PR_categoria='$this->categoria', PR_talla='$this->talla',PR_color='$this->color', PR_marca='$this->marca', PR_material='$this->material', PR_descripcion='$this->descripcion', PR_cantidad= '$this->cantidad', PR_precio='$this->precio', PR_foto='$this->foto' WHERE PR_ID ='$this->id'";
     $query=$pdo->prepare($sql);
 
     $this->result=$query->execute([
     ':PR_referencia'=>$this->referencia,
-    ':PR_usuario'=> $this->usuario,
+    ':AD_ID'=> $this->usuario,
     ':PR_inicio'=> $this->inicio,
     ':PR_nombre'=> $this->nombre,
     ':PR_clientela'=> $this->clientela,
