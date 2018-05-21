@@ -3,14 +3,14 @@
 	<title>El Surtidor-Administracion de articulos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="../public/css/bootstrap.css">
-	<link rel="stylesheet" href="../public/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link href="../public/css/jquery.dataTables.min.css" rel="stylesheet">
-	<script src="../public/js/jquery-3.1.1.min.js"></script>
-	<script src="../public/js/jquery.dataTables.min.js"></script>
-	<script src="../public/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="../public/images/ico.png">
-	<script language="javascript" src="../public/js/jquery-1.2.6.min.js"></script>
+	<link rel="stylesheet" href="../public/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../public/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="../public/assets/css/jquery.dataTables.min.css" rel="stylesheet">
+	<script src="../public/assets/js/jquery-3.1.1.min.js"></script>
+	<script src="../public/assets/js/jquery.dataTables.min.js"></script>
+	<script src="../public/assets/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../public/assets/images/ico.png">
+	<script language="javascript" src="../public/assets/js/jquery-1.2.6.min.js"></script>
 </head>
 <body>
 	<header>

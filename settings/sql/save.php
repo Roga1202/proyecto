@@ -1,6 +1,6 @@
 	<?php
-		require_once 'conexion.php';
-		require_once '../POO/producto.php';
+		require_once '../settings/sql/conexion.php';
+		require_once '../settings/POO/producto.php';
 
 
 		if(!empty($_POST)){
@@ -24,8 +24,8 @@
 			$inicio=date("Y-m-d H:i:s");
 			$usuario=1;
 
-			require_once "../script/arraytalla.php";
-			require_once "../script/arrayfoto.php";
+			require_once "../settings/script/arraytalla.php";
+			require_once "../settings/script/arrayfoto.php";
 
 			$producto= new Producto($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$arraytalla,$color,$marca,$material,$descripcion,$cantidad,$precio,$arrayfoto);
 			$producto->uploaded();
@@ -57,7 +57,7 @@
 						<h3>ERROR AL GUARDAR</h3>
 					<?php } ?>
 
-					<a href="../public/administracion_articulos.php" class="btn btn-primary">Regresar</a>
+					<a href="./index.php?route=/admin/articulo/administrar" class="btn btn-primary">Regresar</a>
 
 				</div>
 			</div>

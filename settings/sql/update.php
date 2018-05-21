@@ -21,7 +21,7 @@
 		$cantidad=$_POST['cantidad'];
 		$precio=$_POST['precio'];
 		$inicio=date("Y-m-d H:i:s");
-		$usuario='root';
+		$usuario=1;
 
 
 		require_once "../script/arrayfoto.php";
@@ -41,13 +41,13 @@
 	<title>El Surtidor</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="../public/css/bootstrap.css">
-	<link rel="stylesheet" href="../public/css/menu.css">
-	<link rel="stylesheet" href="../public/font-awesome-4.7.0\css\font-awesome.min.css">
-	<script src="../public/js/jquery-3.2.1.js"></script>
-	<script src="../public/js/jquery-3.2.1.min.js"></script>
-	<script src="../public/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="../public/images/ico.	png" />
+	<link rel="stylesheet" href="../../public/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../../public/assets/menu.css">
+	<link rel="stylesheet" href="../../public/assets/font-awesome-4.7.0\css\font-awesome.min.css">
+	<script src="../public/assets/js/jquery-3.2.1.js"></script>
+	<script src="../public/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="../public/assets/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="../public/assets/images/ico.png" />
 	</head>
 
 

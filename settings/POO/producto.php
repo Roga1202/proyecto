@@ -1,5 +1,5 @@
 <?php
-  require_once '../sql/conexion.php';
+  require_once 'conexion.php';
 
   class producto{
 
@@ -71,7 +71,7 @@
          $filename = $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
          $source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
 
-         $directorio = '../../archivos/files/' . $this->referencia . '/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
+         $directorio = '../archivos/files/' . $this->referencia . '/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
 
          //Validamos si la ruta de destino existe, en caso de no existir la creamos
          if(!file_exists($directorio)){

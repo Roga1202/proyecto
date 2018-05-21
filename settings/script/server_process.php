@@ -128,7 +128,7 @@
 				$row[] = $aRow[ $aColumnas[$i] ];
 			}
 		}
-
+		// $row[] = "<td><a href='./index.php?route=/admin/articulo/modificacion?referencia=".$aRow['PR_referencia']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
 		$row[] = "<td><a href='modificar_articulo.php?referencia=".$aRow['PR_referencia']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
 		$row[] = "<td><a href='#' data-href='../settings/sql/delete.php?referencia=".$aRow['PR_referencia']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
 
