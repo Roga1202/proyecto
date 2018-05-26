@@ -20,6 +20,7 @@
     $sucursal->uploaded();
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>El Surtidor</title>

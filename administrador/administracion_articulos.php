@@ -1,7 +1,3 @@
-<?php
-	require_once '../settings/sql/conexion.php';
-
-?>
 <html lang="es">
 	<head>
 		<title>El Surtidor-Administracion de articulos</title>
@@ -88,7 +84,7 @@
   				<a href="" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-cog"></span> Administar
 		        </a>
-		        <a href="./index.php?route=/admin/articulo/registro" class="btn btn-info btn-lg">
+		        <a href="./index.php?route=/admin/articulos/agregar" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-plus"></span> Agregar
 		        </a>
 		        <a href="historial.php" class="btn btn-info btn-lg">

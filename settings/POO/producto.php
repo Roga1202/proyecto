@@ -1,5 +1,5 @@
 <?php
-  require_once 'conexion.php';
+  require_once '../settings/sql/conexion.php';
 
   class producto{
 
@@ -20,10 +20,8 @@
   private $foto;
   public $result;
 
-    function __construct($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$talla,$color,$marca,$material,$descripcion,$cantidad,$precio,$foto){
-    if(!empty($ID)){
+  function __construct($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$talla,$color,$marca,$material,$descripcion,$cantidad,$precio,$foto){
       $this->id=$ID;
-    }
     $this->referencia=$referencia;
     $this->usuario=$usuario;
     $this->inicio=$inicio;
@@ -40,9 +38,12 @@
     $this->foto=$foto;
   }
 
+
   function uploaded(){
+
     global $pdo;
-    $sql = "INSERT INTO producto (PR_referencia, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio, PR_foto, AD_ID) VALUES('$this->referencia', '$this->inicio', '$this->nombre', '$this->clientela', '$this->categoria', '$this->talla', '$this->color', '$this->marca', '$this->material', '$this->descripcion', '$this->cantidad', '$this->precio', '$this->foto', '$this->usuario')";
+    $sql = "INSERT INTO producto (PR_ID,PR_referencia, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio, PR_foto, AD_ID) VALUES('$this->id','$this->referencia', '$this->inicio', '$this->nombre', '$this->clientela', '$this->categoria', '$this->talla', '$this->color', '$this->marca', '$this->material', '$this->descripcion', '$this->cantidad', '$this->precio', '$this->foto', '$this->usuario')";
+    var_dump($_POST);
     $query=$pdo->prepare($sql);
     $this->result=$query->execute([
     ':PR_referencia'=>$this->referencia,

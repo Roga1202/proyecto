@@ -29,13 +29,8 @@
 
 		$actualizacion_producto= new producto($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$arraytalla,$color,$marca,$material,$descripcion,$cantidad,$precio,$arrayfoto);
 		$actualizacion_producto->update();
-		// $sql = "UPDATE producto SET PR_referencia='$referencia', usuario='$PR_usuario',fecha=$PR_inicio ,nom_art='$nombre', user='$user', cat='$cat', precio='$precio',cant='$cant' WHERE ref = '$ref'";
-		// $resultado = $mysqli->query($sql);
-		// $id_insert= $ref;
 		}
 ?>
-
-<!DOCTYPE html PUBLIC>
 <html>
 <head>
 	<title>El Surtidor</title>
@@ -61,7 +56,7 @@
 						<h3>ERROR AL MODIFICAR</h3>
 					<?php } ?>
 
-					<a href="../public/administracion_articulos.php" class="btn btn-primary">Regresar</a>
+					<a href="../../administrador/index.php?route=/admin/articulos/administracion_articulos" class="btn btn-primary">Regresar</a>
 
 				</div>
 			</div>

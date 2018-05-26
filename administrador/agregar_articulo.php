@@ -3,7 +3,7 @@
 	<title>El Surtidor-Administracion de articulos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="../public/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
 	<link rel="stylesheet" href="../public/assets/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="../public/assets/css/jquery.dataTables.min.css" rel="stylesheet">
 	<script src="../public/assets/js/jquery-3.1.1.min.js"></script>
@@ -17,7 +17,7 @@
 	   $("#clientela").change(function () {
 	           $("#clientela option:selected").each(function () {
 	            elegido=$(this).val();
-	            $.post("categoria.php", { elegido: elegido }, function(data){
+	            $.post("../settings/script/categoria.php", { elegido: elegido }, function(data){
 	            $("#categoria").html(data);
 	            });
 	        });
@@ -30,7 +30,7 @@
 	   $("#categoria").change(function () {
 	           $("#categoria option:selected").each(function () {
 	            elegido=$(this).val();
-	            $.post("talla.php", { elegido: elegido }, function(data){
+	            $.post("../settings/script/talla.php", { elegido: elegido }, function(data){
 	            $("#talla").html(data);
 	            });
 	        });
@@ -219,7 +219,7 @@
 	</div>
 	<footer class="footer">
 		<?php
-			require_once 'footer.php';
+			require_once '../public/footer.php';
 		?>
 	</footer>
 </body>

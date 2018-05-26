@@ -25,7 +25,7 @@
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 			  <li class="active"><a href="./index.php?route=/">Inicio</a></li>
-			  <li><a href="./index.php?route=/admin/articulos/administracion_articulos">Articulos</a></li>
+			  <li><a href="./index.php?route=/admin/articulos/administracion">Articulos</a></li>
 			  <li><a href="./index.php?route=adminsitracion_provedores">Proveedores</a></li>
 			  <li><a href="./index.php?route=administracion_sucursales">Sucursales</a></li>
 			  <li><a href="./index.php?route=inicio_sesion">Hola Administrador</a></li>

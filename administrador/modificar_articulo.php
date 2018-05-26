@@ -1,13 +1,3 @@
-<?php
-	require '../settings/sql/conexion.php';
-
-	$referencia= $_GET['referencia'];
-
-	$sql = "SELECT * FROM producto WHERE PR_referencia= '$referencia'";
-	$resultado = $pdo->query($sql);
-	$row = $resultado->fetch(MYSQLI_ASSOC);
-
-?>
 <html>
 <head>
 	<title>El Surtidor-Administracion de articulos</title>
@@ -17,7 +7,7 @@
 	<link rel="stylesheet" href="../public/assets/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="../public/assets/css/jquery.dataTables.min.css" rel="stylesheet">
 	<script src="../public/assets/js/jquery-3.1.1.min.js"></script>
-	<script src="../public/assets/js/jquery.dataTables.min.js"></script>
+	<script src="../public/assets/j	s/jquery.dataTables.min.js"></script>
 	<script src="../public/assets/js/bootstrap.min.js"></script>
 	<link rel="shortcut icon" href="../public/assets/images/ico.png">
 	<script language="javascript" src="../public/assets/js/jquery-1.2.6.min.js"></script>
@@ -116,10 +106,10 @@
 
 				<div class="row" style="margin-left: 5%;">
 		  			<div class="col-md-12">
-		  				<a href="../public/assets/administracion_articulos.php" class="btn btn-info btn-lg">
+		  				<a href="./index.php?route=/admin/articulos/administracion_articulos" class="btn btn-info btn-lg">
 				        	<span class="glyphicon glyphicon-cog"></span> Administar
 				        </a>
-				        <a href="../public/assets/agregar_articulo.php" class="btn btn-info btn-lg">
+				        <a href="agregar_articulo.php" class="btn btn-info btn-lg">
 				        	<span class="glyphicon glyphicon-plus"></span> Agregar
 				        </a>
 				        <a href="historial.php" class="btn btn-info btn-lg">
@@ -249,7 +239,7 @@
 				<div class="form-group">
 					<label for="archivo" class="col-sm-2 control-label">Imagen .jpeg</label>
 					<div class="col-sm-10">
-						<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/ required>
+						<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/>
 
 						<?php
 						$path = "../archivos/files/".$referencia;
