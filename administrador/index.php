@@ -105,9 +105,9 @@ $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 try {
     echo $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
 } catch (HttpRouteNotFoundException $e) {
-    include_once '../public/error.php';
+    include_once '<?php echo BASE_URL;?>error.php';
 } catch (HttpMethodNotAllowedException $e) {
-    include_once '../public/error.php';
+    include_once '<?php echo BASE_URL;?>error.php';
 }
 
 

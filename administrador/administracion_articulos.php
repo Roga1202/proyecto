@@ -3,13 +3,13 @@
 		<title>El Surtidor-Administracion de articulos</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="../public/assets/css/bootstrap.css">
-		<link rel="stylesheet" href="../public/assets/font-awesome-4.7.0/css/font-awesome.min.css">
-		<link href="../public/assets/css/jquery.dataTables.min.css" rel="stylesheet">
-		<script src="../public/assets/js/jquery-3.1.1.min.js"></script>
-		<script src="../public/assets/js/jquery.dataTables.min.js"></script>
-		<script src="../public/assets/js/bootstrap.min.js"></script>
-		<link rel="shortcut icon" href="../public/assets//images/ico.png">
+		<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/bootstrap.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link href="<?php echo BASE_URL;?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
+		<script src="<?php echo BASE_URL;?>assets/js/jquery-3.1.1.min.js"></script>
+		<script src="<?php echo BASE_URL;?>assets/js/jquery.dataTables.min.js"></script>
+		<script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
+		<link rel="shortcut icon" href="<?php echo BASE_URL;?>assets//images/ico.png">
 		<script>
 			$(document).ready(function(){
 				$('#mitabla').DataTable({
@@ -61,11 +61,11 @@
 		  </div>
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-			  <li><a href="./index.php?route=/">Inicio</a></li>
-			  <li><a href="./index.php?route=informacion">¿Quienes Somos?</a></li>
-			  <li><a href="./index.php?route=inscripcion">Articulos</a></li>
-			  <li><a href="./index.php?route=sucursales">Sucursales</a></li>
-			  <li><a href="./index.php?route=inicio_sesion">Iniciar Sesion</a></li>
+			  <li><a href="">Inicio</a></li>
+			  <li><a href="./informacion">¿Quienes Somos?</a></li>
+			  <li><a href="./inscripcion">Articulos</a></li>
+			  <li><a href="./sucursales">Sucursales</a></li>
+			  <li><a href="./inicio_sesion">Iniciar Sesion</a></li>
 			   <li class="active" id="articulo"><a href="administracion_articulos.php">Administracion</a></li>
 			</ul>
 		  </div>
@@ -84,7 +84,7 @@
   				<a href="" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-cog"></span> Administar
 		        </a>
-		        <a href="./index.php?route=/admin/articulos/agregar" class="btn btn-info btn-lg">
+		        <a href="./admin/articulos/agregar" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-plus"></span> Agregar
 		        </a>
 		        <a href="historial.php" class="btn btn-info btn-lg">
@@ -156,7 +156,7 @@
 		<br>
 	<footer class="footer">
 		<<?php
-	 		require_once '../public/footer.php';
+	 		require_once '<?php echo BASE_URL;?>footer.php';
 		 ?>
 	</footer>
 </body>

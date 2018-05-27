@@ -5,14 +5,29 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php';
 
+
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
 use Phroute\Phroute\Exception\HttpMethodNotAllowedException;
 
+
+$basedir= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+
+
+$baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
+
+define('BASE_URL', $baseurl);
+
+
 $route = $_GET['route'] ?? '/';
 
-
+function render($filename, $params = []){
+  ob_start();
+  extract($params);
+  include $filename;
+  return ob_get_clean();
+};
 
 $router = new RouteCollector();
 

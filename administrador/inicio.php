@@ -3,11 +3,11 @@
 	<title>El Surtidor</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="../public/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="../public/assets/font-awesome-4.7.0\css\font-awesome.min.css">
-	<script src="../public/assets/js/jquery-3.2.1.js"></script>
-	<script src="../public/assets/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="../public/assets/images/ico.png" />
+	<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/font-awesome-4.7.0\css\font-awesome.min.css">
+	<script src="<?php echo BASE_URL;?>assets/js/jquery-3.2.1.js"></script>
+	<script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="<?php echo BASE_URL;?>assets/images/ico.png" />
 </head>
 <body>
 	<header>
@@ -24,11 +24,11 @@
 		  </div>
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-			  <li class="active"><a href="./index.php?route=/">Inicio</a></li>
-			  <li><a href="./index.php?route=/admin/articulos/administracion">Articulos</a></li>
-			  <li><a href="./index.php?route=adminsitracion_provedores">Proveedores</a></li>
-			  <li><a href="./index.php?route=administracion_sucursales">Sucursales</a></li>
-			  <li><a href="./index.php?route=inicio_sesion">Hola Administrador</a></li>
+			  <li class="active"><a href="">Inicio</a></li>
+			  <li><a href="./admin/articulos/administracion">Articulos</a></li>
+			  <li><a href="./adminsitracion_provedores">Proveedores</a></li>
+			  <li><a href="./administracion_sucursales">Sucursales</a></li>
+			  <li><a href="./inicio_sesion">Hola Administrador</a></li>
 			</ul>
 		  </div>
 		</nav>
@@ -45,21 +45,21 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img id="img-center" class="img-responsive" src="../public/assets/images/banner0.jpg">
+						<img id="img-center" class="img-responsive" src="<?php echo BASE_URL;?>assets/images/banner0.jpg">
 						<div class="carousel-caption">
 
 						</div>
 					</div>
 
 					<div class="item">
-						<img id="img-center" class="img-responsive" src="../public/assets/images/banner1.jpg">
+						<img id="img-center" class="img-responsive" src="<?php echo BASE_URL;?>assets/images/banner1.jpg">
 						<div class="carousel-caption">
 
 						</div>
 					</div>
 
 					<div class="item">
-						<img id="img-center" class="img-responsive" src="../public/assets/images/banner2.jpg">
+						<img id="img-center" class="img-responsive" src="<?php echo BASE_URL;?>assets/images/banner2.jpg">
 						<div class="carousel-caption">
 
 						</div>
@@ -81,19 +81,19 @@
 	<div class="container-images">
 		<div class="row">
 			<div class="col-md-4" id="man">
-				<img src="../public/assets/images/portman.jpg">
+				<img src="<?php echo BASE_URL;?>assets/images/portman.jpg">
 				<div class="caption">
 					<h4>Hombres</h4>
 				</div>
 			</div>
 			<div class="col-md-4" id="woman">
-				<img src="../public/assets/images/portwoman.jpg">
+				<img src="<?php echo BASE_URL;?>assets/images/portwoman.jpg">
 				<div class="caption">
 					<h4>Mujeres</h4>
 				</div>
 			</div>
 			<div class="col-md-4" id="kid">
-				<img src="../public/assets/images/portkid.jpg">
+				<img src="<?php echo BASE_URL;?>assets/images/portkid.jpg">
 				<div class="caption">
 					<h4>Niños</h4>
 				</div>
