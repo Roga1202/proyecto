@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php';
 
-
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
@@ -31,25 +30,15 @@ function render($filename, $params = []){
 
 $router = new RouteCollector();
 
-$router->get('/', function(){
-  include_once 'inicio.php';
-});
+$router->controller('/', App\controllers\IndexController::class);
 
-$router->get('informacion', function(){
-  include_once './informacion.php';
-});
+$router->controller('/informacion', App\Controllers\informacion\IndexController::class);
 
-$router->get('inscripcion', function(){
-  include_once './inscripcion.php';
-});
+$router->controller('/inscripcion', App\Controllers\inscripcion\IndexController::class);
 
-$router->get('sucursales', function(){
-  include_once './sucursales.php';
-});
+$router->controller('/sucursales', App\Controllers\sucursales\IndexController::class);
 
-$router->get('inicio_sesion', function(){
-  include_once './inicio_sesion.php';
-});
+$router->controller('/inicio_sesion', App\Controllers\inicio_sesion\IndexController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 try {

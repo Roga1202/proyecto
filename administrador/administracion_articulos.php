@@ -61,7 +61,7 @@
 		  </div>
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-			  <li><a href="">Inicio</a></li>
+			  <li><a href="./">Inicio</a></li>
 			  <li><a href="./informacion">¿Quienes Somos?</a></li>
 			  <li><a href="./inscripcion">Articulos</a></li>
 			  <li><a href="./sucursales">Sucursales</a></li>
