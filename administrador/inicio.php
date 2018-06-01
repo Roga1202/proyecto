@@ -25,7 +25,7 @@
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 			  <li class="active"><a href="">Inicio</a></li>
-			  <li><a href="./admin/articulos/administracion">Articulos</a></li>
+			  <li><a href="<?php echo BASE_URL;?>administrador/articulos">Articulos</a></li>
 			  <li><a href="./adminsitracion_provedores">Proveedores</a></li>
 			  <li><a href="./administracion_sucursales">Sucursales</a></li>
 			  <li><a href="./inicio_sesion">Hola Administrador</a></li>
@@ -103,7 +103,7 @@
 <footer class="footer">
 		<?php
 			require_once 'footer.php';
-		 ?>
+		?>
 </footer>
 </body>
 </html>

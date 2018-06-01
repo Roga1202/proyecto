@@ -10,6 +10,7 @@
 	<script src="<?php echo BASE_URL;?>assets/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
 	<link rel="shortcut icon" href="<?php echo BASE_URL;?>assets/images/ico.png">
+
 	<script language="javascript" src="<?php echo BASE_URL;?>assets/js/jquery-1.2.6.min.js"></script>
 	<!--combobox clientela-categoria-->
 	<script language="javascript">
@@ -17,7 +18,7 @@
 	   $("#clientela").change(function () {
 	           $("#clientela option:selected").each(function () {
 	            elegido=$(this).val();
-	            $.post("../settings/script/categoria.php", { elegido: elegido }, function(data){
+	            $.post("./assets/php/clientela.php", { elegido: elegido }, function(data){
 	            $("#categoria").html(data);
 	            });
 	        });
@@ -30,7 +31,7 @@
 	   $("#categoria").change(function () {
 	           $("#categoria option:selected").each(function () {
 	            elegido=$(this).val();
-	            $.post("../settings/script/talla.php", { elegido: elegido }, function(data){
+	            $.post("./assets/php/talla.php", { elegido: elegido }, function(data){
 	            $("#talla").html(data);
 	            });
 	        });
@@ -92,7 +93,7 @@
 			</div>
 
 			<h2><center>Agregar articulo.</center></h2>
-			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="./admin/articulo/guardado" autocomplete="off">
+			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo BASE_URL;?>administrador/articulos/guardado_articulo" autocomplete="off">
   			<br>
 
 			<div class="form-group">

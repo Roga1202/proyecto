@@ -24,11 +24,11 @@
 		  </div>
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-			  <li class="active"><a href="/">Inicio</a></li>
-			  <li><a href="./informacion">¿Quienes Somos?</a></li>
-			  <li><a href="./inscripcion">Articulos</a></li>
-			  <li><a href="./sucursales">Sucursales</a></li>
-			  <li><a href="./inicio_sesion">Iniciar Sesion</a></li>
+			  <li class="active"><a href="<?php echo BASE_URL;?>">Inicio</a></li>
+			  <li><a href="<?php echo BASE_URL;?>informacion">¿Quienes Somos?</a></li>
+			  <li><a href=".<?php echo BASE_URL;?>inscripcion">Articulos</a></li>
+			  <li><a href="<?php echo BASE_URL;?>sucursales">Sucursales</a></li>
+			  <li><a href="<?php echo BASE_URL;?>inicio_sesion">Iniciar Sesion</a></li>
 			</ul>
 		  </div>
 		</nav>

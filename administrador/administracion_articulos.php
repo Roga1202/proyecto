@@ -1,3 +1,4 @@
+
 <html lang="es">
 	<head>
 		<title>El Surtidor-Administracion de articulos</title>
@@ -10,31 +11,7 @@
 		<script src="<?php echo BASE_URL;?>assets/js/jquery.dataTables.min.js"></script>
 		<script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
 		<link rel="shortcut icon" href="<?php echo BASE_URL;?>assets//images/ico.png">
-		<script>
-			$(document).ready(function(){
-				$('#mitabla').DataTable({
-					"order": [[1, "asc"]],
-					"language":{
-					"lengthMenu": "Mostrar _MENU_ registros por pagina",
-					"info": "Mostrando pagina _PAGE_ de _PAGES_",
-						"infoEmpty": "No hay registros disponibles",
-						"infoFiltered": "(filtrada de _MAX_ registros)",
-						"loadingRecords": "Cargando...",
-						"processing":     "Procesando...",
-						"search": "Buscar:",
-						"zeroRecords":    "No se encontraron registros coincidentes",
-						"paginate": {
-							"next":       "Siguiente",
-							"previous":   "Anterior"
-						},
-					},
-					"bProcessing": true,
-					"bServerSide": true,
-					"sAjaxSource": "../settings/script/server_process.php"
-				});
-			});
-		</script>
-
+		<script src="<?php echo BASE_URL;?>assets/js/tabla_administracion.js"></script>
 	</head>
 
 <body>
@@ -81,10 +58,10 @@
 
   		<div class="row" style="margin-left: 5%;">
   			<div class="col-md-12">
-  				<a href="" class="btn btn-info btn-lg">
+  				<a href="<?php echo BASE_URL;?>administrador/articulos" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-cog"></span> Administar
 		        </a>
-		        <a href="./admin/articulos/agregar" class="btn btn-info btn-lg">
+		        <a href="<?php echo BASE_URL;?>administrador/articulos/agregar_articulo" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-plus"></span> Agregar
 		        </a>
 		        <a href="historial.php" class="btn btn-info btn-lg">
@@ -155,8 +132,8 @@
 		<br>
 		<br>
 	<footer class="footer">
-		<<?php
-	 		require_once '<?php echo BASE_URL;?>footer.php';
+		<?php
+	 		require_once '../public/footer.php';
 		 ?>
 	</footer>
 </body>

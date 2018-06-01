@@ -18,7 +18,7 @@ $baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
 
 define('BASE_URL', $baseurl);
 
-
+var_dump(BASE_URL);
 $route = $_GET['route'] ?? '/';
 
 function render($filename, $params = []){
@@ -30,15 +30,37 @@ function render($filename, $params = []){
 
 $router = new RouteCollector();
 
+// Inicio
 $router->controller('/', App\controllers\IndexController::class);
+$router->controller('/informacion', App\Controllers\inicio\informacion\IndexController::class);
+$router->controller('/inscripcion', App\Controllers\inicio\inscripcion\IndexController::class);
+$router->controller('/sucursales', App\Controllers\inicio\sucursales\IndexController::class);
+$router->controller('/inicio_sesion', App\Controllers\inicio\inicio_sesion\IndexController::class);
 
-$router->controller('/informacion', App\Controllers\informacion\IndexController::class);
+//Administrador
+$router->controller('/administrador', App\Controllers\administrador\IndexController::class);
 
-$router->controller('/inscripcion', App\Controllers\inscripcion\IndexController::class);
+//Articulos
+$router->controller('/administrador/articulos', App\Controllers\administrador\articulos\ArticuloController::class);
+$router->controller('/administrador/articulos/agregar', App\Controllers\administrador\articulos\ArticuloController::CLass);
+$router->controller('/administrador/articulos/guardado_articulo', App\Controllers\administrador\articulos\ArticuloController::Class);
 
-$router->controller('/sucursales', App\Controllers\sucursales\IndexController::class);
 
-$router->controller('/inicio_sesion', App\Controllers\inicio_sesion\IndexController::class);
+//MODIFICACION DE ARTICULO
+$router->get('/admin/articulo/modificacion?referencia={referencia}', function(){
+  require '../settings/sql/conexion.php';
+
+  $referencia= str_replace('/admin/articulo/modificacion?referencia=', '', $_GET['route']);
+
+  $sql = "SELECT * FROM producto WHERE PR_referencia= '$referencia'";
+  $resultado = $pdo->query($sql);
+  $row = $resultado->fetch(MYSQLI_ASSOC);
+
+  return render('./modificar_articulo.php', ['row' =>$row , 'referencia' => $referencia]);
+});
+
+
+
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 try {
@@ -46,6 +68,6 @@ try {
 } catch (HttpRouteNotFoundException $e) {
     include_once './error.php';
 } catch (HttpMethodNotAllowedException $e) {
-    include_once './error.php';
+    include_once './errors.php';
 }
 ?>

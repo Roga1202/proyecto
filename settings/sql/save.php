@@ -1,7 +1,3 @@
-	<?php
-
-
-?>
 <html>
 <head>
 	<title>El Surtidor-Administracion de articulos</title>

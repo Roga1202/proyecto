@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\informacion;
+namespace App\Controllers\inicio\informacion;
 
 class IndexController{
   public function getIndex(){

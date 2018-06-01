@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\inicio_sesion;
+namespace App\Controllers\inicio\inicio_sesion;
 
 class IndexController{
   public function getIndex(){

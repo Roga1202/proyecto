@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\sucursales;
+namespace App\Controllers\inicio\sucursales;
 
 class IndexController{
   public function getIndex(){
