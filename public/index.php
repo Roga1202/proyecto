@@ -21,13 +21,6 @@ define('BASE_URL', $baseurl);
 var_dump(BASE_URL);
 $route = $_GET['route'] ?? '/';
 
-function render($filename, $params = []){
-  ob_start();
-  extract($params);
-  include $filename;
-  return ob_get_clean();
-};
-
 $router = new RouteCollector();
 
 // Inicio

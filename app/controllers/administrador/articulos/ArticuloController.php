@@ -1,10 +1,13 @@
 <?php
 namespace App\Controllers\administrador\articulos;
 
-class ArticuloController{
+use app\Controllers\BaseController;
+
+class ArticuloController extends BaseController {
   //index
   public function getindex(){
-    return render('../administrador/administracion_articulos.php');
+    require_once '../settings/sql/conexion.php';
+    return $this->render('/administrador/administracion_articulos.twig');
   }
 
   //agregar articulo formulario

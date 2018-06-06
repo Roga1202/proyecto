@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>El Surtidor</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="{{'' | url}}assets/css/bootstrap.css">
+	<link rel="stylesheet" href="{{'' | url}}assets/font-awesome-4.7.0\css\font-awesome.min.css">
+	<script src="{{'' | url}}assets/js/bootstrap.min.js"></script>
+	<script src="{{'' | url}}assets/js/jquery-3.2.1.js"></script>
+	<script src="{{'' | url}}assets/js/tabla_administracion.js"></script>
+	<link rel="shortcut icon" href="{{'' | url}}assets/images/ico.png" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+			  <span class="sr-only">Desplegar navegación</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<div class="col-md-2 navbar-brand"><img src="images/branda.jpg"></div>
+		  </div>
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			  <li class="active"><a href="">Inicio</a></li>
+			  <li><a href="{{'' | url}}administrador/articulos">Articulos</a></li>
+			  <li><a href="./adminsitracion_provedores">Proveedores</a></li>
+			  <li><a href="./administracion_sucursales">Sucursales</a></li>
+			  <li><a href="./inicio_sesion">Hola Administrador</a></li>
+			</ul>
+		  </div>
+		</nav>
+	</header>
+	{% block content %} {% endblock %}
+<footer class="footer">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-3">
+	      <h4>Direccion</h4>
+	      <p>Centro Av 7 , calle 7 y 8 local N° 7-56. Centro San Cristóbal  RIF J-31129078</p>
+	    </div>
+	    <div class="col-md-3">
+	      <h4>Telefono</h4>
+	      <p>0276-3546759</p>
+	    </div>
+	    <div class="col-md-3">
+	      <h4>Correo Electronico</h4>
+	      <a mailto="Elsurtidor@tiendas.com">ElSurtidordelaFronteraca@gmail.com</a>
+	    </div>
+	    <div class="col-md-3">
+	      <div>
+	        <ul class="nav navbar-nav delete-div">
+	          <li><a href="https://www.facebook.com/ElSurtidordelaFronteraC.A/" target="_blank" class="fa fa-facebook"></a></li>
+	          <li><a href="https://twitter.com/SurtiFronteraCA" target="_blank" class="fa fa-twitter"></a></li>
+	          <li><a href="https://www.pinterest.es/elsurtidordelafronteraca/" target="_blank" class="fa fa-pinterest"></a></li>
+	          <li><a href="https://www.instagram.com/elsurtidordelafronteraca/" target="_blank" class="fa fa-instagram"></a></li>
+	          <li><a href="https://plus.google.com/u/0/118367914219581607265" target="_blank" class="fa fa-google-plus"></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	  <br>
+	</div>
+</footer>
+</body>
+</html>

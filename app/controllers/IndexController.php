@@ -1,9 +1,9 @@
 <?php
 namespace App\Controllers;
 
-class IndexController{
+class IndexController extends BaseController {
   public function getIndex(){
-    return render('./inicio.php');
+    return $this->render('./no_users/inicio.php');
   }
 }
 
