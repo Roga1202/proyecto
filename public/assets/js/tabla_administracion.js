@@ -17,6 +17,6 @@ $(document).ready(function(){
     },
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": "../../assets/php/server_process.php"
+    "sAjaxSource": "../php/server_process.php"
   });
 });
