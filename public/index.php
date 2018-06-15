@@ -18,7 +18,7 @@ $capsule->addConnection([
     'host'      => 'localhost',
     'database'  => 'surtidor',
     'username'  => 'root',
-    'password'  => '  ',
+    'password'  => '',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
@@ -27,12 +27,9 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-
+//URL
 $basedir= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-
-
 $baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
-
 define('BASE_URL', $baseurl);
 
 $route = $_GET['route'] ?? '/';
@@ -50,8 +47,6 @@ $router->controller('/administrador', App\Controllers\administrador\IndexControl
 
 //Articulos
 $router->controller('/administrador/articulos', App\Controllers\administrador\articulos\ArticuloController::class);
-$router->controller('/administrador/articulos/agregar', App\Controllers\administrador\articulos\ArticuloController::CLass);
-$router->controller('/administrador/articulos/guardado_articulo', App\Controllers\administrador\articulos\ArticuloController::Class);
 
 
 //MODIFICACION DE ARTICULO

@@ -5,11 +5,11 @@
 		* License:   GPL v2 or BSD (3-point)
 	*/
 
-	require_once ../../../app/settings/sql/conexion.php';
+	require_once '../../../app/settings/sql/conexion.php';
 
 	/* Nombre de La Tabla */
 	$sTabla = "producto";
-
+	
 	/* Array que contiene los nombres de las columnas de la tabla*/
 	$aColumnas = array('PR_ID' ,'PR_referencia', 'PR_nombre', 'PR_clientela','PR_categoria', 'PR_cantidad','PR_precio' );
 

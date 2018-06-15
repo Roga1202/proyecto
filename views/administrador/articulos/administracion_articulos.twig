@@ -1,5 +1,9 @@
 {% extends "./administrador/layout.twig"%}
 {% block content %}
+<script src="{{'' | url}}assets/js/tabla_administracion.js"></script>
+<script src="{{'' | url}}assets/js/jquery-3.1.1.min.js"></script>
+<script src="{{'' | url}}assets/js/jquery.dataTables.min.js"></script>
+<link href="{{'' | url}}assets/css/jquery.dataTables.min.css" rel="stylesheet">
 	<div class="container">
 		<div class="row">
   			<div class="col-md-12">
@@ -10,10 +14,10 @@
 
   		<div class="row" style="margin-left: 5%;">
   			<div class="col-md-12">
-  				<a href="<?php echo BASE_URL;?>administrador/articulos" class="btn btn-info btn-lg">
+  				<a href="{{'administrador/articulos' | url}}" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-cog"></span> Administar
 		        </a>
-		        <a href="<?php echo BASE_URL;?>administrador/articulos/agregar_articulo" class="btn btn-info btn-lg">
+		        <a href="{{'administrador/articulos/agregar' | url}}" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-plus"></span> Agregar
 		        </a>
 		        <a href="historial.php" class="btn btn-info btn-lg">

@@ -19,7 +19,6 @@ class BaseController {
         $this->templateEngine->addFilter(new \Twig_simplefilter('url',function ($path){
           return BASE_URL . $path;
         }));
-
     }
 
     public function render($fileName, $data = []) {

@@ -2,24 +2,21 @@
 namespace App\Controllers\administrador\articulos;
 
 use App\Controllers\BaseController;
-use App\Model\Producto;
+use App\Models;
 
 class ArticuloController extends BaseController {
   //index
   public function getindex(){
-    $producto= App\Model\Producto::all();
-    return $this>render('/administrador/administracion_articulos.twig');
+    return $this->render('/administrador/articulos/administracion_articulos.twig');
   }
 
   //agregar articulo formulario
-  public function getagregar_articulo(){
-    return render('../administrador/agregar_articulo.php');
+  public function getagregar(){
+    return $this->render('/administrador/articulos/agregar_articulo.twig');
   }
 
   //envio articulo formulario
   public function postguardado_articulo(){
-    require_once '../settings/sql/conexion.php';
-    require_once '../public/assets/POO/producto.php';
 
     if(!empty($_POST)){
       $ID= null;
@@ -42,14 +39,30 @@ class ArticuloController extends BaseController {
       $inicio=date("Ymd H:i:s");
       $usuario=1;
 
-      require_once "../settings/script/arraytalla.php";
-      require_once "../settings/script/arrayfoto.php";
+      require_once "assets/php/arraytalla.php";
+      require_once "assets/php/arrayfoto.php";
 
-      $producto= new Producto($ID,$referencia,$usuario,$inicio,$nombre,$clientela,$categoria,$arraytalla,$color,$marca,$material,$descripcion,$cantidad,$precio,$arrayfoto);
-      $producto>uploaded();
+      var_dump($_POST);
+      $producto= new \App\Models\Producto([
+
+        'PR_referencia'=>$referencia,
+        'PR_nombre'=> $nombre,
+        'PR_clientela'=> $clientela,
+        'PR_categoria'=> $categoria,
+        'PR_talla'=> $talla,
+        'PR_color'=> $color,
+        'PR_marca'=> $marca,
+        'PR_material'=> $material,
+        'PR_descripcion'=> $descripcion,
+        'PR_cantidad'=> $cantidad,
+        'PR_precio'=> $precio,
+        'PR_foto'=> $foto,
+        'AD_ID'=> $usuario,
+      ]);
+      $producto->save();
 
     }
-      return render('../settings/sql/save.php',['referencia'=> $referencia , 'nombre' => $nombre, 'clientela'=> $clientela , 'categgoia'=> $categoria , 'talla' => $talla , 'foto' => $foto , 'color' => $color , 'marca' => $marca , 'material' => $material , 'descripcion' => $descripcion, 'cantidad'=> $cantidad , 'precio'=> $precio , 'inicio' => $inicio , 'usuario' => $usuario, 'result' => $producto>result]);
+      return $this->render('administrador/articulos/resultado.twig');
   }
 
   //modificar articulo formulario
