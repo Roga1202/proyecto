@@ -9,16 +9,26 @@ use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
 use Phroute\Phroute\Exception\HttpMethodNotAllowedException;
+
+//URL
+$basedir= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
+define('BASE_URL', $baseurl);
+
+//variables entorno
+$dotenv = new \Dotenv\Dotenv(__DIR__ . '/..');
+$dotenv->load();
+
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule;
-
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'surtidor',
-    'username'  => 'root',
-    'password'  => '',
+    'host'      => getenv('DB_HOST'),
+    'database'  => getenv('DB_NAME'),
+    'username'  => getenv('DB_USER'),
+    'password'  => getenv('DB_PASS'),
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
@@ -27,10 +37,7 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-//URL
-$basedir= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-$baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
-define('BASE_URL', $baseurl);
+
 
 $route = $_GET['route'] ?? '/';
 $router = new RouteCollector();

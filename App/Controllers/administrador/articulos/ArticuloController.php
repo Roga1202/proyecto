@@ -3,6 +3,7 @@ namespace App\Controllers\administrador\articulos;
 
 use App\Controllers\BaseController;
 use App\Models;
+use Sirius\Validation\Validator;
 
 class ArticuloController extends BaseController {
   //index
@@ -17,6 +18,8 @@ class ArticuloController extends BaseController {
 
   //envio articulo formulario
   public function postguardado_articulo(){
+
+    $validator= new Validator();
 
     if(!empty($_POST)){
       $ID= null;
