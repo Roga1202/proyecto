@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers\administrador\articulos;
 
-use app\Controllers\BaseController;
+use App\Controllers\BaseController;
+use App\Model\Producto;
 
 class ArticuloController extends BaseController {
   //index
   public function getindex(){
-    require_once '../app/settings/sql/conexion.php';
-    var_dump($row['PR_ID']);
+    $producto= App\Model\Producto::all();
     return $this>render('/administrador/administracion_articulos.twig');
   }
 

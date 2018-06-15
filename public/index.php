@@ -9,6 +9,23 @@ use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
 use Phroute\Phroute\Exception\HttpMethodNotAllowedException;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'surtidor',
+    'username'  => 'root',
+    'password'  => '  ',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 
 $basedir= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
@@ -18,7 +35,6 @@ $baseurl='http://' . $_SERVER['HTTP_HOST'] . $basedir;
 
 define('BASE_URL', $baseurl);
 
-var_dump(BASE_URL);
 $route = $_GET['route'] ?? '/';
 $router = new RouteCollector();
 
