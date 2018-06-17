@@ -23,20 +23,37 @@
 			</div>
 
 			<h2><center>Agregar articulo.</center></h2>
+
+
+			<div class="row">
+				{% if errors  %}
+				<div class="alert alert-danger">
+					<ul>
+						{% for input, messages in errors  %}
+							{% for messages in messages %}
+								<li>{{ input }}:{{ messages }}</li>
+							{% endfor %}
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+			</div>
+
 			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'administrador/articulos/guardado_articulo' | url}}" autocomplete="off">
   			<br>
+
 
 			<div class="form-group">
 				<label for="referencia" class="col-sm-2 control-label">Referencia</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" id="referencia" name="referencia" placeholder="112233" required>
+						<input type="number" class="form-control" id="referencia" name="referencia" placeholder="112233" max='2147483647' required>
 					</div>
 			</div>
 
 			<div class="form-group">
 				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del articulo" required>
+					<input type="text" class="form-control" id="nombre" name="nombre" maxlength="45" placeholder="Nombre del articulo" required>
 				</div>
 			</div>
 
@@ -46,10 +63,10 @@
 					<select class="selectpicker" id="clientela" name="clientela" required>
 						<option value="Dama">Dama</option>
 				    	<option value="Caballero">Caballero</option>
-					    	<option value="Ninos">Niños</option>
-				    	<option value="Bebes">Bebés</option>
-				    	<option value="Hogar">Hogar</option>
-							<option value="Otros">Otros</option>
+					    	<option value="Nino">Niño</option>
+				    	<option value="Bebe">Bebé</option>
+				    	<option value="Hoga">Hoga</option>
+							<option value="Otro">Otro</option>
 					</select>
 				</div>
 			</div>
@@ -91,14 +108,14 @@
 			<div class="form-group">
 				<label for="color" class="col-sm-2 control-label">Color</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="color" name="color"required>
+					<input type="text" class="form-control" id="color" name="color" maxlength="45" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="color" class="col-sm-2 control-label">Marca</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="marca" name="marca"required>
+					<input type="text" class="form-control" id="marca" name="marca" maxlength="45" required>
 				</div>
 			</div>
 
@@ -106,14 +123,14 @@
 			<div class="form-group">
 				<label for="color" class="col-sm-2 control-label">Material</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="material" name="material"required>
+					<input type="text" class="form-control" id="material" name="material" maxlength="45" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="color" class="col-sm-2 control-label">Descripcion</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="descripcion" name="descripcion"required>
+					<input type="text" class="form-control" id="descripcion" name="descripcion" maxlength="45" required>
 				</div>
 			</div>
 

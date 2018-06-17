@@ -18,10 +18,27 @@ class ArticuloController extends BaseController {
 
   //envio articulo formulario
   public function postguardado_articulo(){
+    $errors= [];
+    $result= false;
+    $validator= new \Sirius\Validation\Validator();
+    $validator->add(
+      array(
+        'referencia'=>'Required | Integer | between(0,2147483647) ',
+        'nombre'=> 'Required | AlphaNumHyphen |  MaxLength(45)',
+        'clientela'=> 'Required | AlphaNumeric |  Inlist(dama)',//VALIDACION PENDIENTE
+        'categoria'=> 'Required | AlphaNumeric |  MaxLength(20)',//VALIDACION PENDIENTE
+        'talla'=> 'Required | AlphaNumHyphen |  MaxLength(10)',//VALIDACION PENDIENTE
+        'foto'=> 'AlphaNumHyphen |  MaxLength(500)',//VALIDACION PENDIENTE
+        'color'=> 'Required | AlphaNumeric |  MaxLength(30)',
+        'marca'=> 'Required | AlphaNumHyphen |  MaxLength(60)',
+        'material'=> 'Required | AlphaNumeric |  MaxLength(45)',
+        'descripcion'=> 'Required | AlphaNumHyphen |  MaxLength(45)',
+        'cantidad'=> 'Required | Integer',
+        'precio'=> 'Required | Number |  MaxLength(45)',
+      )
+    );
 
-    $validator= new Validator();
-
-    if(!empty($_POST)){
+    if ($validator->validate($_POST)) {
       $ID= null;
       $referencia=$_POST['referencia'];
       $nombre=$_POST['nombre'];
@@ -39,7 +56,6 @@ class ArticuloController extends BaseController {
       $descripcion=$_POST['descripcion'];
       $cantidad=$_POST['cantidad'];
       $precio=$_POST['precio'];
-      $inicio=date("Ymd H:i:s");
       $usuario=1;
 
       require_once "assets/php/arraytalla.php";
@@ -63,9 +79,16 @@ class ArticuloController extends BaseController {
         'AD_ID'=> $usuario,
       ]);
       $producto->save();
-
+      $result=true;
+    } else{
+      $errors= $validator->getmessages();
     }
-      return $this->render('administrador/articulos/resultado.twig');
+      var_dump($errors);
+      var_dump($_POST['referencia']);
+      return $this->render('administrador/articulos/agregar_articulo.twig',[
+        'result' => $result,
+        'errors' => $errors,
+      ]);
   }
 
   //modificar articulo formulario
