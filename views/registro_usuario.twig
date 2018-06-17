@@ -1,0 +1,128 @@
+{% extends "layout.twig"%}
+{% block content %}
+
+	<div class="row">
+		{% if errors  %}
+		<div class="alert alert-danger">
+			<ul>
+				{% for input, messages in errors  %}
+					{% for messages in messages %}
+						<li>{{ input }}:{{ messages }}</li>
+					{% endfor %}
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if result %}
+        <div class="alert alert-success">Post Saved!</div>
+    {% endif %}
+	</div>
+
+	<div class="container">
+		<div class="row centered-form">
+		<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Bienvenido Por Favor Registrese</h3>
+				</div>
+
+				<div class="panel-body">
+					<form action="{{'registro_usuario' | url}}" method="POST" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" name="first_name" id="first_name" class="form-control input-sm" maxlength="20" placeholder="First Name">
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" name="last_name" id="last_name" class="form-control input-sm" maxlength="20" placeholder="Last Name">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-xs-2 col-sm-2 col-md-2">
+								<div class="form-group">
+									<select id="nacionalidad" name="nacionalidad" required>
+										<option value="V">V<option>
+										<option value="E">E<option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-10 col-sm-10 col-md-10">
+								<div class="form-group">
+									<input type="text" maxlength="8" name="ci" id="ci" class="form-control input-sm" placeholder="Cedula">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<input type="email" name="email" id="email" class="form-control input-sm" maxlength="30" placeholder="Email Address">
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="password" name="password" id="password" class="form-control input-sm"  placeholder="Password" maxlength="20" required>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" maxlength="20" required>
+								</div>
+							</div>
+						</div>
+
+						<p>Pregunta de Seguridad</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<select id="pregunta" name="pregunta" required>
+										<option value="Perro">¿Nombre de su mascota?</option>
+										<option value="Carro">¿Nombre de su auto Favorito?</option>
+										<option value="Deporte">¿Nombre de su deporte Favorito?</option>
+										<option value="Universidad">¿Nombre de su universidad?</option>
+										<option value="Novia">¿Nombre de su primera novia?</option>
+										<option value="Videojuego">¿Nombre de su videojuego favorito?</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" name="respuesta" id="respuesta" class="form-control input-sm" placeholder="">
+								</div>
+							</div>
+						</div>
+
+						<p>Direccion</p>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="form-group">
+									<input type="text" name="direccion" id="direccion" class="form-control input-sm" placeholder="" required>
+								</div>
+							</div>
+						</div>
+
+						<p>Numero de Telefono</p>
+						<div class="row">
+
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="form-group">
+									<input type="number" maxlength="11" name="numero" id="numero" class="form-control input-sm" placeholder="0426-1234567" max=99999999999>
+								</div>
+							</div>
+						</div>
+
+						<input type="submit" value="Registrese" class="btn btn-info btn-block">
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

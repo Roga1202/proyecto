@@ -44,16 +44,15 @@ $router = new RouteCollector();
 
 // Inicio
 $router->controller('/', App\controllers\IndexController::class);
-$router->controller('/informacion', App\Controllers\inicio\informacion\IndexController::class);
-$router->controller('/inscripcion', App\Controllers\inicio\inscripcion\IndexController::class);
-$router->controller('/sucursales', App\Controllers\inicio\sucursales\IndexController::class);
-$router->controller('/inicio_sesion', App\Controllers\inicio\inicio_sesion\IndexController::class);
 
 //Administrador
 $router->controller('/administrador', App\Controllers\administrador\IndexController::class);
 
 //Articulos
 $router->controller('/administrador/articulos', App\Controllers\administrador\articulos\ArticuloController::class);
+
+//Usuaios
+$router->controller('/administrador/usuarios', App\Controllers\administrador\usuarios\UserController::class);
 
 
 //MODIFICACION DE ARTICULO
@@ -76,8 +75,8 @@ $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 try {
     echo $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
 } catch (HttpRouteNotFoundException $e) {
-    include_once './error.php';
+    include_once 'error.php';
 } catch (HttpMethodNotAllowedException $e) {
-    include_once './errors.php';
+    include_once 'error.php';
 }
 ?>

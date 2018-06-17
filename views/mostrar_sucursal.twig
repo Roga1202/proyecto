@@ -1,4 +1,5 @@
-<!DOCTYPE html >
+{% extends "layout.twig "%}
+{% block content %}
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -24,10 +25,10 @@
     <script>
       var customLabel = {
         restaurant: {
-          label: 'R'
+          Central: 'C'
         },
         bar: {
-          label: 'B'
+          Aliadas: 'A'
         }
       };
 
@@ -97,4 +98,4 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqO9riafgEz38XkGpljUD8lGVM0RVhE5c&callback=initMap">
     </script>
   </body>
-</html>
+{% endblock %}

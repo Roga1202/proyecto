@@ -1,19 +1,20 @@
 <?php
-namespace App\Controllers\administrador\articulos;
+namespace App\Controllers\administrador\usuarios;
 
 use App\Controllers\BaseController;
 use App\Models;
 use Sirius\Validation\Validator;
 
-class ArticuloController extends BaseController {
+class UserController extends BaseController{
+
   //index
   public function getindex(){
-    return $this->render('/administrador/articulos/administracion_articulos.twig');
+    return $this->render('/administrador/usuarios/administracion_usuarios.twig');
   }
 
   //agregar articulo formulario
-  public function getagregar(){
-    return $this->render('/administrador/articulos/agregar_articulo.twig');
+  public function getregistro(){
+    return $this->render('/no_user/registro.twig');
   }
 
   //envio articulo formulario
@@ -91,31 +92,6 @@ class ArticuloController extends BaseController {
       ]);
   }
 
-  //modificar articulo formulario
-  public function getmodificar(){
-    return render('../administrador/agregar_sucursal.php');
-  }
-
-  //enviar cambio articulo
-  public function postresultado_modificar(){
-    return render('../settings/sql/update.php');
-  }
-
-  //agregar sucursal formulario
-  public function getagregar_sucursal(){
-    return render('../administrador/agregar_sucursal.php');
-  }
-
-// ver historial
-  public function gethistorial(){
-    return render('../administrador/historial.php');
-  }
-
-//ver movimiento del historial
-  public function getver_historial(){
-    return render('../administrador/agregar_sucursal.php');
-  }
-
 }
 
-?>
+ ?>

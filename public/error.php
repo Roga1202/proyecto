@@ -16,13 +16,13 @@
                 <h1>
                     Oops!</h1>
                 <h2>
-                    404 Not Found</h2>
+                    404 Error de pagina</h2>
                 <div class="error-details">
-                    Sorry, an error has occured, Requested page not found!
+                    Lo siento, ha ocurrido un error, no tienes permisos de entrar a la pagina o no existe!
                 </div>
                 <div class="error-actions">
-                    <a href="" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>
+                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Volver al Inicio </a>
                 </div>
             </div>
         </div>
