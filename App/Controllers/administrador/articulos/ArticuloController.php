@@ -38,6 +38,7 @@ class ArticuloController extends BaseController {
       )
     );
 
+
     if ($validator->validate($_POST)) {
       $ID= null;
       $referencia=$_POST['referencia'];

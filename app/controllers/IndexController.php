@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models;
+use \Sirius\Validation\Validator;
 
 class IndexController extends BaseController {
 
@@ -25,12 +26,16 @@ class IndexController extends BaseController {
     return $this->render('inicio_sesion.twig');
   }
 
-  public function postinicio_sesion(){
-    return $this->render('inicio_sesion.twig',[
-      'result' => $result,
-      'errors' => $errors,
-    ]);
-  }
+  // public function postiniciar_sesion(){
+  //   return $this->render('inicio_sesion.twig');
+  // }
+  //
+  // public function postinicio_sesion(){
+  //   return $this->render('inicio_sesion.twig',[
+  //     'result' => $result,
+  //     'errors' => $errors,
+  //   ]);
+  // }
 
   public function getRegistro_usuario(){
     return $this->render('registro_usuario.twig');
@@ -39,24 +44,25 @@ class IndexController extends BaseController {
   public function postRegistro_usuario(){
     $errors= [];
     $result= false;
-    $validator= new \Sirius\Validation\Validator();
+    $validator= new Validator();
     $validator->add(
       array(
         'first_name'=>'Required | AlphaNumeric | MaxLength(20)',
         'last_name'=> 'Required | AlphaNumHyphen | MaxLength(20)',
-        'nacionalidad'=> 'Required | AlphaNumeric | MaxLength(1)',//VALIDACION PENDIENTE
-        'ci'=> 'Required | AlphaNumeric | MaxLength(9)',//VALIDACION PENDIENTE
+        'nacionalidad'=> 'Required | AlphaNumeric | MaxLength(1)',
+        'ci'=> 'Required | Integer | MaxLength(9)',
         'email'=> 'Required | email | MaxLength(30)',//VALIDACION PENDIENTE
-        'password'=> 'AlphaNumHyphen | MaxLength(20)',//VALIDACION PENDIENTE
-        'password_confirmation'=> 'AlphaNumHyphen |  MaxLength(20)',//VALIDACION PENDIENTE
+        'password'=> 'AlphaNumHyphen | MaxLength(20)',
+        'password_confirmation'=> 'AlphaNumHyphen |  MaxLength(20)',
         'pregunta'=> 'Required | AlphaNumeric |  MaxLength(30)',
         'respuesta'=> 'Required | AlphaNumHyphen |  MaxLength(60)',
-          'direccion'=> 'Required | AlphaNumHyphen |  MaxLength(500)',
+        'direccion'=> 'Required | AlphaNumHyphen |  MaxLength(500)',//VALIDACION PENDIENTE
         'numero'=> 'Required | Integer |  MaxLength(45)',
       )
     );
 
     if ($validator->validate($_POST)) {
+
       $ID= null;
       $primer_nombre=$_POST['first_name'];
       $apellido=$_POST['last_name'];
@@ -75,6 +81,8 @@ class IndexController extends BaseController {
 
 
       if($password===$password_confirmation){
+
+        $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
         $user= new \App\Models\Users([
 
           'CLWEB_CI'=>$cedula,

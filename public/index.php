@@ -45,6 +45,10 @@ $router = new RouteCollector();
 // Inicio
 $router->controller('/', App\controllers\IndexController::class);
 
+// Sesion
+$router->controller('/sesion', App\controllers\SesionController::class);
+
+
 //Administrador
 $router->controller('/administrador', App\Controllers\administrador\IndexController::class);
 

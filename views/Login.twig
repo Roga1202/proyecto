@@ -2,38 +2,31 @@
 {% block content %}
 <div class="container">
   <div class="col-md-12">
-    <h2><center>Inicio de Sesion</center></h2>
 
     <div class="row">
       {% if errors  %}
-      <div class="alert alert-danger">
-        <ul>
-          {% for input, messages in errors  %}
-            {% for messages in messages %}
-              <li>{{ input }}:{{ messages }}</li>
-            {% endfor %}
-          {% endfor %}
-        </ul>
-      </div>
+      {% include('partials/erros.twigg') %}
       {% endif %}
     </div>
+
+    <h2><center>Inicio de Sesion</center></h2>
   </div>
 
-  <form name="iniciar_sesion" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'/inicio_sesion' | url}}" autocomplete="off">
+  <form name="iniciar_sesion" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'sesion/login' | url}}" autocomplete="off">
     <br>
 
-
+    <p>{{valor}}</p>
   <div class="form-group">
     <label for="Correo" class="col-sm-2 control-label">Correo</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="Correo" name="correo"required>
+        <input type="email" class="form-control" id="Correo" maxlength="30" name="correo"required>
       </div>
   </div>
 
   <div class="form-group">
     <label for="password" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="Password" name="password"required>
+      <input type="password" class="form-control" id="Password" max="20" name="password"required>
     </div>
   </div>
 

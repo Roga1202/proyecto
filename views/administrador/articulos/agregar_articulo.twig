@@ -27,17 +27,13 @@
 
 			<div class="row">
 				{% if errors  %}
-				<div class="alert alert-danger">
-					<ul>
-						{% for input, messages in errors  %}
-							{% for messages in messages %}
-								<li>{{ input }}:{{ messages }}</li>
-							{% endfor %}
-						{% endfor %}
-					</ul>
-				</div>
+				{% include('partials/erros.twigg') %}
 				{% endif %}
+				{% if result %}
+		        <div class="alert alert-success">Producto Guardado!</div>
+		    {% endif %}
 			</div>
+
 
 			<form name="agregar_producto" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'administrador/articulos/guardado_articulo' | url}}" autocomplete="off">
   			<br>

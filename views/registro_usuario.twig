@@ -1,23 +1,15 @@
 {% extends "layout.twig"%}
 {% block content %}
 
-	<div class="row">
-		{% if errors  %}
-		<div class="alert alert-danger">
-			<ul>
-				{% for input, messages in errors  %}
-					{% for messages in messages %}
-						<li>{{ input }}:{{ messages }}</li>
-					{% endfor %}
-				{% endfor %}
-			</ul>
-		</div>
-		{% endif %}
+<div class="row">
+	{% if errors  %}
+	{% include('partials/errors.twig') %}
+	{% endif %}
+	{% if result %}
+			<div class="alert alert-success">Usuario Guardado!</div>
+	{% endif %}
+</div>
 
-		{% if result %}
-        <div class="alert alert-success">Post Saved!</div>
-    {% endif %}
-	</div>
 
 	<div class="container">
 		<div class="row centered-form">
