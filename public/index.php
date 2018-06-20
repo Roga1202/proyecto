@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php';
 
+session_start();
+
 use Phroute\Phroute\RouteCollector;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\Exception\HttpRouteNotFoundException;
@@ -47,6 +49,9 @@ $router->controller('/', App\controllers\IndexController::class);
 
 // Sesion
 $router->controller('/sesion', App\controllers\SesionController::class);
+
+// User
+$router->controller('/user', App\controllers\user\UserController::class);
 
 
 //Administrador

@@ -10,7 +10,7 @@ class Users extends Model{
   const UPDATED_AT = 'CLWEB_actualizacion';
 
   protected $table= 'clienteweb';
-  protected $fillable = ['CLWEB_CI', 'CLWEB_correo','CLWEB_contrasena','CLWEB_direccion','CLWEB_telefono','CLWEB_primernombre','CLWEB_primerapellido','CLWEB_pregunta','CLWEB_respuesta',];
+  // protected $fillable = ['CLWEB_CI', 'CLWEB_correo','CLWEB_contrasena','CLWEB_direccion','CLWEB_telefono','CLWEB_primernombre','CLWEB_primerapellido','CLWEB_pregunta','CLWEB_respuesta',];
 
 }
 

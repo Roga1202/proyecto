@@ -1,13 +1,22 @@
 <?php
 namespace App\Controllers;
 
-use App\Models;
+use App\Models\Users;
 use \Sirius\Validation\Validator;
 
 class IndexController extends BaseController {
 
   public function getIndex(){
-    return $this->render('index.twig');
+    if (isset($_SESSION['userId'])) {
+      $userId= $_SESSION['userId'];
+      $user=Users::query()->where('CLWEB_ID', '=', $userId)->first();
+      if($user){
+        return $this->render('user/index.twig',['user' => $user]);
+        header('Location:' . BASE_URL . '/');
+      }
+    }else{
+      $this->render('index.twig');
+    }
   }
 
   public function getsucursales(){
@@ -25,17 +34,6 @@ class IndexController extends BaseController {
   public function getiniciar_sesion(){
     return $this->render('inicio_sesion.twig');
   }
-
-  // public function postiniciar_sesion(){
-  //   return $this->render('inicio_sesion.twig');
-  // }
-  //
-  // public function postinicio_sesion(){
-  //   return $this->render('inicio_sesion.twig',[
-  //     'result' => $result,
-  //     'errors' => $errors,
-  //   ]);
-  // }
 
   public function getRegistro_usuario(){
     return $this->render('registro_usuario.twig');
@@ -82,19 +80,31 @@ class IndexController extends BaseController {
 
       if($password===$password_confirmation){
 
-        $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $user= new \App\Models\Users([
+        $user= new \App\Models\Users();
 
-          'CLWEB_CI'=>$cedula,
-          'CLWEB_correo'=> $email,
-          'CLWEB_contrasena'=> $password,
-          'CLWEB_direccion'=> $direccion,
-          'CLWEB_telefono'=> $numero,
-          'CLWEB_primernombre'=> $primer_nombre,
-          'CLWEB_primerapellido'=> $apellido,
-          'CLWEB_pregunta'=> $pregunta,
-          'CLWEB_respuesta'=> $respuesta,
-        ]);
+        $user->CLWEB_CI=$cedula;
+        $user->CLWEB_correo=$email;
+        $user->CLWEB_contrasena=password_hash($password, PASSWORD_DEFAULT);
+        $user->CLWEB_direccion=$direccion;
+        $user->CLWEB_telefono=$numero;
+        $user->CLWEB_primernombre=$primer_nombre;
+        $user->CLWEB_primerapellido=$apellido;
+        $user->CLWEB_pregunta=$pregunta;
+        $user->CLWEB_respuesta=$respuesta;
+
+
+        // $user= new \App\Models\Users([
+        //
+        //   'CLWEB_CI'=>$cedula,
+        //   'CLWEB_correo'=> $email,
+        //   'CLWEB_contrasena'=> $password,
+        //   'CLWEB_direccion'=> $direccion,
+        //   'CLWEB_telefono'=> $numero,
+        //   'CLWEB_primernombre'=> $primer_nombre,
+        //   'CLWEB_primerapellido'=> $apellido,
+        //   'CLWEB_pregunta'=> $pregunta,
+        //   'CLWEB_respuesta'=> $respuesta,
+        // ]);
         $user->save();
         $result=true;
       }

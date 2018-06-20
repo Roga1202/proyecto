@@ -20,6 +20,7 @@ class ComposerStaticInit55018813d10948cb7d5c8d29d02d7441
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
+            'Symfony\\Component\\HttpFoundation\\' => 33,
             'Sirius\\Validation\\' => 18,
         ),
         'P' => 
@@ -58,6 +59,10 @@ class ComposerStaticInit55018813d10948cb7d5c8d29d02d7441
         'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Symfony\\Component\\HttpFoundation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
         'Sirius\\Validation\\' => 
         array (
