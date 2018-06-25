@@ -28,8 +28,8 @@
 			  <li><a href="{{'administrador/articulos' | url}}">Articulos</a></li>
 			  <li><a href="{{'administrador/provedores' | url}}">Proveedores</a></li>
 			  <li><a href="{{'administrador/sucursales' | url}}">Sucursales</a></li>
-				<li><ul></ul></li>
-						<!--<a href="{{'administrador/sesion' | url}}">Hola Administrador</a>  -->
+				<li><a href="{{'user/perfil' | url}}"> {% block admin %}{% endblock %}</a></li>
+			  <li><a href="{{'/sesion/logout' | url}}">Logout</a></li>
 			</ul>
 		  </div>
 		</nav>

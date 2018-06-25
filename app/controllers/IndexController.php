@@ -3,19 +3,47 @@ namespace App\Controllers;
 
 use App\Models\Users;
 use \Sirius\Validation\Validator;
+use  App\Models\Administrador;
 
 class IndexController extends BaseController {
 
   public function getIndex(){
-    if (isset($_SESSION['userId'])) {
-      $userId= $_SESSION['userId'];
-      $user=Users::query()->where('CLWEB_ID', '=', $userId)->first();
-      if($user){
-        return $this->render('user/index.twig',['user' => $user]);
-        header('Location:' . BASE_URL . '/');
-      }
-    }else{
-      $this->render('index.twig');
+    var_dump($_SESSION);  
+    if(isset($_SESSION['userId'])) {
+      if(isset($_SESSION['permisos'])){
+        if($_SESSION['permisos'] == 1){
+          $userId= $_SESSION['userId'];
+          $_SESSION['userId']=$userId;
+
+          $admin=Administrador::query()->where('AD_ID', '=', $userId)->first();
+          if($admin){
+            return $this->render('administrador/index.twig',[
+              'admin' => $admin,
+              'userid' => $userId,
+            ]);
+            header('Location:' . BASE_URL . 'administrador');
+          }
+        }
+        if($_SESSION['permisos'] == 2){
+          $userId= $_SESSION['userId'];
+          $_SESSION['userId']=$userId;
+          $user=Users::query()->where('CLWEB_ID', '=', $userId)->first();
+          if($user){
+            return $this->render('user/index.twig',[
+              'user' => $user,
+              'userid'=> $userId,
+            ]);
+            header('Location:' . BASE_URL . 'user');
+          }
+        }
+      }else{
+        return $this->render('index.twig');
+        header('Location:' . BASE_URL . '');
+    }
+  }
+    else{
+      return $this->render('index.twig');
+      header('Location:' . BASE_URL . '=');
     }
   }
 
@@ -29,10 +57,6 @@ class IndexController extends BaseController {
 
   public function getinformacion(){
     return $this->render('informacion.twig');
-  }
-
-  public function getiniciar_sesion(){
-    return $this->render('inicio_sesion.twig');
   }
 
   public function getRegistro_usuario(){
@@ -79,45 +103,38 @@ class IndexController extends BaseController {
 
 
       if($password===$password_confirmation){
-
         $user= new \App\Models\Users();
 
-        $user->CLWEB_CI=$cedula;
-        $user->CLWEB_correo=$email;
-        $user->CLWEB_contrasena=password_hash($password, PASSWORD_DEFAULT);
-        $user->CLWEB_direccion=$direccion;
-        $user->CLWEB_telefono=$numero;
-        $user->CLWEB_primernombre=$primer_nombre;
-        $user->CLWEB_primerapellido=$apellido;
-        $user->CLWEB_pregunta=$pregunta;
-        $user->CLWEB_respuesta=$respuesta;
+        //encriptacion clave
+        $password=password_hash($password, PASSWORD_DEFAULT);
 
+        $user= new \App\Models\Users([
 
-        // $user= new \App\Models\Users([
-        //
-        //   'CLWEB_CI'=>$cedula,
-        //   'CLWEB_correo'=> $email,
-        //   'CLWEB_contrasena'=> $password,
-        //   'CLWEB_direccion'=> $direccion,
-        //   'CLWEB_telefono'=> $numero,
-        //   'CLWEB_primernombre'=> $primer_nombre,
-        //   'CLWEB_primerapellido'=> $apellido,
-        //   'CLWEB_pregunta'=> $pregunta,
-        //   'CLWEB_respuesta'=> $respuesta,
-        // ]);
+          'CLWEB_CI'=>$cedula,
+          'CLWEB_correo'=> $email,
+          'CLWEB_contrasena'=> $password,
+          'CLWEB_direccion'=> $direccion,
+          'CLWEB_telefono'=> $numero,
+          'CLWEB_primernombre'=> $primer_nombre,
+          'CLWEB_primerapellido'=> $apellido,
+          'CLWEB_pregunta'=> $pregunta,
+          'CLWEB_respuesta'=> $respuesta,
+        ]);
         $user->save();
         $result=true;
+        var_dump($password);
+
       }
         else{
-          $errors= "Las contrasenas no coinciden";
+          $error= "Las contrasenas no coinciden";
         }
     } else{
       $errors= $validator->getmessages();
     }
-      var_dump($errors);
     return $this->render('registro_usuario.twig',[
       'result' => $result,
       'errors' => $errors,
+      'error' => $error,
     ]);
   }
 

@@ -1,14 +1,8 @@
-{% extends 'layout.twig' %}
+{% extends './layout.twig' %}
 {% block content %}
 <div class="container">
   <div class="col-md-12">
-    <div class="pull-right">
-      <h4><a href="{{'sesion/administrador' | url}}">Inicio de Sesion de Administrador</a></h4>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="col-md-12">
+
     <div class="row">
       {% if errors  %}
       {% include('partials/errorslogin.twig')%}
@@ -18,7 +12,7 @@
     <h2><center>Inicio de Sesion</center></h2>
   </div>
 
-  <form name="iniciar_sesion" class="form-horizontal" method="POST" action="{{'sesion/login' | url}}" autocomplete="on">
+  <form name="iniciar_sesion" class="form-horizontal" method="POST" action="{{'sesion/administrador' | url}}" autocomplete="on">
     <br>
 
     <p>{{valor}}</p>
@@ -42,7 +36,8 @@
       <input type="submit" class="btn btn-primary" value="Guardar">
     </div>
   </div>
-
   </form>
+</div>
+</div>
 </div>
 {% endblock %}

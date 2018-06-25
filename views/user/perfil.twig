@@ -1,0 +1,133 @@
+{% extends "./user/layout.twig" %}
+{% block user %} Hola {{user.CLWEB_primernombre}}  {{user.CLWEB_primerapellido}}{% endblock %}
+{% block content %}
+
+  <div class="row">
+      <div class="container">
+        <div class="md-col-12">
+          <h3><center>Bienvenido a tu perfil {{user.CLWEB_primernombre}}  {{user.CLWEB_primerapellido}}</center></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  	{% if errors %}
+  		{% include('partials/errors.twig')%}
+  	{% endif %}
+  	{% if error %}
+  		{% include('partials/error.twig')%}
+  	{% endif %}
+  	{% if result %}
+  		<div class="alert alert-success">Usuario Actualizado!</div>
+  	{% endif %}
+  </div>
+
+  <div class="container">
+    <form name="perfil" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'user/perfil' | url}}" autocomplete="off">
+
+      <p><input type="hidden" class="form-control" id="ID" name="ID" value="{{user.CLWEB_ID}}"></p>
+
+    <div class="form-group">
+    <label for="cedula" class="col-sm-2 control-label">Cedula</label>
+      <p>{{user.CLWEB_CI}}</p>
+      <p><input type="hidden" class="form-control" id="cedula" name="cedula" value="{{user.CLWEB_CI}}"></p>
+    </center></div>
+
+    <div class="form-group">
+    <label for="first_name" class="col-sm-2 control-label">Primer Nombre</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Primer Nombre" value="{{user.CLWEB_primernombre}}" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <label for="others_names" class="col-sm-2 control-label">Segundo Nombre</label>
+    <div class="col-sm-10">
+      <input type="text " class="form-control" id="others_names" name="others_names" placeholder="Segundo Nombre" value="{{user.CLWEB_otronombre}}">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="last_name" class="col-sm-2 control-label">Primer Apellido</label>
+    <div class="col-sm-10">
+      <input type="text " class="form-control" id="last_name" name="last_name" placeholder="Primer Apellido" value="{{user.CLWEB_primerapellido}}" required>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="other_surnames" class="col-sm-2 control-label">Segundo Apellido</label>
+    <div class="col-sm-10">
+      <input type="text " class="form-control" id="other_surnames" name="other_surnames" placeholder="Segundo Apellido" value="{{user.CLWEB_segundoapellido}}" >
+    </div>
+    </div>
+
+
+
+    <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">Correo</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Correos" value="{{user.CLWEB_correo}}" required>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Contrasena</label>
+    <div class="col-sm-10">
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="password_confirmation" class="col-sm-2 control-label">Verificar Contrasena</label>
+    <div class="col-sm-10">
+        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+    <label for="direccion" class="col-sm-2 control-label">Direccion</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="direccion" name="direccion" value="{{user.CLWEB_direccion}}" required>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="numero" class="col-sm-2 control-label">Telefono</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="numero" name="numero" value="{{user.CLWEB_telefono}}" required>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="pregunta" class="col-sm-2 control-label">Pregunta de Seguridad</label>
+      <div class="col-sm-10">
+        <select id="pregunta" name="pregunta" required>
+          <option value="Perro"{% if user.CLWEB_pregunta == "Perro" %} selected>{% else %}>{% endif %}¿Nombre de su mascota?</option>
+          <option value="Carro"{% if user.CLWEB_pregunta == "Carro" %} selected>{% else %}>{% endif %}¿Nombre de su auto Favorito?</option>
+          <option value="Deporte"{% if user.CLWEB_pregunta == "Deporte" %} selected>{% else %}>{% endif %}¿Nombre de su deporte Favorito?</option>
+          <option value="Universidad"{% if user.CLWEB_pregunta == "Universidad" %} selected>{% else %}>{% endif %}¿Nombre de su universidad?</option>
+          <option value="Novia"{% if user.CLWEB_pregunta == "Novia" %} selected>{% else %}>{% endif %}¿Nombre de su primera novia? </option>
+          <option value="Videojuego"{% if user.CLWEB_pregunta == "Videojuego" %} selected>{% else %}>{% endif %}¿Nombre de su videojuego favorito?</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+  <label for="respuesta" class="col-sm-2 control-label">Respuesta</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" id="respuesta" name="respuesta" value="{{user.CLWEB_respuesta}}" required>
+  </div>
+  </div>
+
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <a href="{{'' | url}}" class="btn btn-default">Regresar</a>
+      <button type="submit" class="btn btn-primary" onclick="pregunta()" >Guardar</button>
+    </div>
+    </div>
+    </form>
+  </div>
+
+{% endblock %}
