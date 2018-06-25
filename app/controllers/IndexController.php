@@ -8,43 +8,26 @@ use  App\Models\Administrador;
 class IndexController extends BaseController {
 
   public function getIndex(){
-    var_dump($_SESSION);  
-    if(isset($_SESSION['userId'])) {
-      if(isset($_SESSION['permisos'])){
-        if($_SESSION['permisos'] == 1){
-          $userId= $_SESSION['userId'];
-          $_SESSION['userId']=$userId;
-
-          $admin=Administrador::query()->where('AD_ID', '=', $userId)->first();
-          if($admin){
-            return $this->render('administrador/index.twig',[
-              'admin' => $admin,
-              'userid' => $userId,
-            ]);
-            header('Location:' . BASE_URL . 'administrador');
-          }
+    if (isset($_SESSION['userId']) and isset( $_SESSION['permiso'])) {
+      if ($_SESSION['permiso']==2) {
+        $userId= $_SESSION['userId'];
+        $user= \App\Models\Users::query()->where('CLWEB_ID', '=', $userId)->first();
+        if($user){
+          return $this->render('user/index.twig',['user' => $user]);
+          header('Location:' . BASE_URL . 'user');
         }
-        if($_SESSION['permisos'] == 2){
-          $userId= $_SESSION['userId'];
-          $_SESSION['userId']=$userId;
-          $user=Users::query()->where('CLWEB_ID', '=', $userId)->first();
-          if($user){
-            return $this->render('user/index.twig',[
-              'user' => $user,
-              'userid'=> $userId,
-            ]);
-            header('Location:' . BASE_URL . 'user');
-          }
+      }
+      if ($_SESSION['permiso']==1) {
+        $adminId= $_SESSION['userId'];
+        $admin= \App\Models\Administrador::query()->where('AD_ID', '=', $adminId)->first();
+        if($admin){
+          return $this->render('administrador/index.twig',['admin' => $admin]);
+          header('Location:' . BASE_URL . 'administrador');
         }
-      }else{
-        return $this->render('index.twig');
-        header('Location:' . BASE_URL . '');
+      }
     }
-  }
-    else{
       return $this->render('index.twig');
-      header('Location:' . BASE_URL . '=');
-    }
+      header('Location:' . BASE_URL . '');
   }
 
   public function getsucursales(){
@@ -122,7 +105,6 @@ class IndexController extends BaseController {
         ]);
         $user->save();
         $result=true;
-        var_dump($password);
 
       }
         else{

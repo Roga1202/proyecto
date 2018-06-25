@@ -62,7 +62,7 @@ class UserController extends BaseController{
       require_once "assets/php/arraytalla.php";
       require_once "assets/php/arrayfoto.php";
 
-      var_dump($_POST);
+
       $producto= new \App\Models\Producto([
 
         'PR_referencia'=>$referencia,
@@ -84,8 +84,7 @@ class UserController extends BaseController{
     } else{
       $errors= $validator->getmessages();
     }
-      var_dump($errors);
-      var_dump($_POST['referencia']);
+
       return $this->render('administrador/articulos/agregar_articulo.twig',[
         'result' => $result,
         'errors' => $errors,

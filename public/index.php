@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0);
 
 require '../vendor/autoload.php';
 
@@ -65,7 +65,7 @@ $router->controller('/administrador/usuarios', App\Controllers\administrador\usu
 
 
 //MODIFICACION DE ARTICULO
-$router->get('/admin/articulo/modificacion?referencia={referencia}', function(){
+$router->get('/administrador/articulo/modificacion?referencia={referencia}', function(){
   require '../settings/sql/conexion.php';
 
   $referencia= str_replace('/admin/articulo/modificacion?referencia=', '', $_GET['route']);
@@ -76,8 +76,6 @@ $router->get('/admin/articulo/modificacion?referencia={referencia}', function(){
 
   return render('./modificar_articulo.php', ['row' =>$row , 'referencia' => $referencia]);
 });
-
-
 
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());

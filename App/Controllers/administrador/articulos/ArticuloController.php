@@ -62,7 +62,6 @@ class ArticuloController extends BaseController {
       require_once "assets/php/arraytalla.php";
       require_once "assets/php/arrayfoto.php";
 
-      var_dump($_POST);
       $producto= new \App\Models\Producto([
 
         'PR_referencia'=>$referencia,
@@ -84,8 +83,7 @@ class ArticuloController extends BaseController {
     } else{
       $errors= $validator->getmessages();
     }
-      var_dump($errors);
-      var_dump($_POST['referencia']);
+
       return $this->render('administrador/articulos/agregar_articulo.twig',[
         'result' => $result,
         'errors' => $errors,
@@ -94,27 +92,36 @@ class ArticuloController extends BaseController {
 
   //modificar articulo formulario
   public function getmodificar(){
-    return render('../administrador/agregar_sucursal.php');
+    return $this->render('../administrador/agregar_sucursal.php');
   }
 
   //enviar cambio articulo
   public function postresultado_modificar(){
-    return render('../settings/sql/update.php');
+    return $this->render('../settings/sql/update.php');
   }
 
   //agregar sucursal formulario
   public function getagregar_sucursal(){
-    return render('../administrador/agregar_sucursal.php');
+    return $this->render('../administrador/agregar_sucursal.php');
   }
 
 // ver historial
   public function gethistorial(){
-    return render('../administrador/historial.php');
+    return $this->render('../administrador/historial.php');
   }
 
 //ver movimiento del historial
   public function getver_historial(){
-    return render('../administrador/agregar_sucursal.php');
+    return $this->render('../administrador/agregar_sucursal.php');
+  }
+
+  public function geteliminar(){
+      $temp=$_SERVER[REQUEST_URI];
+      $temp=str_replace("/administrador/articulos/eliminar?referencia=" ,'', $temp);
+      $ID=$temp;
+      $user= \App\Models\Producto::query()->where('PR_referencia', $ID)->delete();
+
+    return $this->render('/administrador/articulos/administracion_articulos.twig');
   }
 
 }

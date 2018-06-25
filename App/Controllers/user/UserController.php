@@ -9,7 +9,6 @@ use \Sirius\Validation\Validator;
 class UserController extends BaseController {
 
   public function getindex(){
-
     return $this->render('./user/index.twig');
   }
 

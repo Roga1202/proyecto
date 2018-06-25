@@ -43,7 +43,6 @@
 
     global $pdo;
     $sql = "INSERT INTO producto (PR_ID,PR_referencia, PR_inicio, PR_nombre, PR_clientela, PR_categoria, PR_talla, PR_color, PR_Marca, PR_material, PR_descripcion, PR_cantidad, PR_precio, PR_foto, AD_ID) VALUES('$this->id','$this->referencia', '$this->inicio', '$this->nombre', '$this->clientela', '$this->categoria', '$this->talla', '$this->color', '$this->marca', '$this->material', '$this->descripcion', '$this->cantidad', '$this->precio', '$this->foto', '$this->usuario')";
-    var_dump($_POST);
     $query=$pdo->prepare($sql);
     $this->result=$query->execute([
     ':PR_referencia'=>$this->referencia,

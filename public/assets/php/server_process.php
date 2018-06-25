@@ -9,7 +9,7 @@
 
 	/* Nombre de La Tabla */
 	$sTabla = "producto";
-	
+
 	/* Array que contiene los nombres de las columnas de la tabla*/
 	$aColumnas = array('PR_ID' ,'PR_referencia', 'PR_nombre', 'PR_clientela','PR_categoria', 'PR_cantidad','PR_precio' );
 
@@ -129,7 +129,7 @@
 			}
 		}
 		$row[] = "<td><a href='http://elsurtidor.com/admin/articulo/modificacion?referencia=".$aRow['PR_referencia']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		$row[] = "<td><a href='#' data-href='../settings/sql/delete.php?referencia=".$aRow['PR_referencia']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/eliminar?referencia=".$aRow['PR_referencia']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
 
 		$output['aaData'][] = $row;
 	}

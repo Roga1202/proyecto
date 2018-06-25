@@ -84,18 +84,16 @@ class SesionController extends BaseController {
                     $_SESSION['userId']=$admin->AD_ID;
                     $_SESSION['permiso']=1;
                     return $this->render('administrador/index.twig',['admin' => $admin]);
-                    header('Location:' . BASE_URL . 'user');
+                    header('Location:' . BASE_URL . 'administrador');
                     return null;
                 }
             }
       $validator->addmessage('correo', 'Usuario y/o la contrasena son incorrectas');
     }
     $errors = $validator->getMessages();
-    return $this->render('login.twig',[
+    return $this->render('Login_administradores.twig',[
       'errors'=> $errors,
     ]);
-
-    return $this->render('Login.twig');
   }
 
 }
