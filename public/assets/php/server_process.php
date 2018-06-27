@@ -128,8 +128,8 @@
 				$row[] = $aRow[ $aColumnas[$i] ];
 			}
 		}
-		$row[] = "<td><a href='http://elsurtidor.com/admin/articulo/modificacion?referencia=".$aRow['PR_referencia']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/eliminar?referencia=".$aRow['PR_referencia']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/modificacion/".$aRow['PR_ID']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/eliminar/".$aRow['PR_ID']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
 
 		$output['aaData'][] = $row;
 	}

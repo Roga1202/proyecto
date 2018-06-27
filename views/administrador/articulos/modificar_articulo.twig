@@ -1,43 +1,7 @@
-<html>
-<head>
-	<title>El Surtidor-Administracion de articulos</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/bootstrap.css">
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>assets/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link href="<?php echo BASE_URL;?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
-	<script src="<?php echo BASE_URL;?>assets/js/jquery-3.1.1.min.js"></script>
-	<script src="<?php echo BASE_URL;?>assets/j	s/jquery.dataTables.min.js"></script>
-	<script src="<?php echo BASE_URL;?>assets/js/bootstrap.min.js"></script>
-	<link rel="shortcut icon" href="<?php echo BASE_URL;?>assets/images/ico.png">
-	<script language="javascript" src="<?php echo BASE_URL;?>assets/js/jquery-1.2.6.min.js"></script>
-	<!--combobox clientela-categoria-->
-	<script language="javascript">
-	$(document).ready(function(){
-		 $("#clientela").change(function () {
-						 $("#clientela option:selected").each(function () {
-							elegido=$(this).val();
-							$.post("categoria.php", { elegido: elegido }, function(data){
-							$("#categoria").html(data);
-							});
-					});
-		 })
-	});
-	</script>
-	<!--combobox categoria-talla-->
-	<script language="javascript">
-	$(document).ready(function(){
-		 $("#categoria").change(function () {
-						 $("#categoria option:selected").each(function () {
-							elegido=$(this).val();
-							$.post("talla2.php", { elegido: elegido }, function(data){
-							$("#talla").html(data);
-							});
-					});
-		 })
-	});
-	</script>
-
+{% extends "./administrador/layout.twig" %}
+{% block content %}
+	<script src="{{'assets/js/combobox3.js' | url}}"></script>
+	<script src="{{'assets/js/combobox4.js' | url}}"></script>
 	<script type="text/javascript">
 			$(document).ready(function() {
 				$('.delete').click(function(){
@@ -64,83 +28,58 @@
     }
 }
 </script>
-</head>
-<body>
-	<header>
-		<div class="navbar navbar-default navbar-fixed-black">
-			<ul class="nav navbar-nav delete-div">
-				<li><a href="https://www.facebook.com/ElSurtidordelaFronteraC.A/" target="_blank" class="fa fa-facebook"></a></li>
-				<li><a href="https://twitter.com/SurtiFronteraCA" target="_blank" class="fa fa-twitter"></a></li>
-				<li><a href="https://www.pinterest.es/elsurtidordelafronteraca/" target="_blank" class="fa fa-pinterest"></a></li>
-				<li><a href="https://www.instagram.com/elsurtidordelafronteraca/" target="_blank" class="fa fa-instagram"></a></li>
-				<li><a href="https://plus.google.com/u/0/118367914219581607265" target="_blank" class="fa fa-google-plus"></a></li>
-			</ul>
-		</div>
-		<nav class="navbar navbar-default" role="navigation">
-		  <div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse">
-			  <span class="sr-only">Desplegar navegación</span>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			  <span class="icon-bar"></span>
-			</button>
-			<div class="col-md-2 navbar-brand"><img src="images/brand.jpg"></div>
-		  </div>
-		  <div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-			  <li><a href="inicio.php">Inicio</a></li>
-			  <li><a href="informacion.php">¿Quienes Somos?</a></li>
-			  <li><a href="inscripcion.php">Articulos</a></li>
-			  <li><a href="sucursales.php">Sucursales</a></li>
-			   <li class="active" id="articulo"><a href="administracion_articulos.php">Administracion</a></li>
-			</ul>
-		  </div>
-		</nav>
-	</header>
 	<div class="container">
 		<div class="row">
   			<div class="col-md-12">
   				<h2><center>Modificar Articulo</center></h2>
-  				<form name="actualizar_articulo" class="form-horizontal" method="POST" enctype="multipart/form-data" action="../settings/sql/update.php" autocomplete="off">
-
-				<div class="row" style="margin-left: 5%;">
-		  			<div class="col-md-12">
-		  				<a href="./admin/articulos/administracion_articulos" class="btn btn-info btn-lg">
-				        	<span class="glyphicon glyphicon-cog"></span> Administar
-				        </a>
-				        <a href="agregar_articulo.php" class="btn btn-info btn-lg">
-				        	<span class="glyphicon glyphicon-plus"></span> Agregar
-				        </a>
-				        <a href="historial.php" class="btn btn-info btn-lg">
-				        	<span class="glyphicon glyphicon-calendar"></span> Historial
-						</a>
-						<a href="estadistica.php" class="btn btn-info btn-lg">
-							<span class="glyphicon glyphicon-stats"></span> Estadistica de Ventas
-						</a>
-		  			</div>
-		  		</div>
 
 
-				<div class="form-group">
-					<label for="id" class="col-sm-2 control-label">ID</label>
-					<div class="col-sm-10">
-						<p><?php echo $row['PR_ID']?></p>
-						<p><input type="hidden" class="form-control" id="ID" name="ID" value="<?php echo $row['PR_ID']?>"></p>
-					</div>
+	<div class="row">
+		{% if errors  %}
+		{% include('partials/errors.twig') %}
+		{% endif %}
+		{% if result %}
+				<div class="alert alert-success">Producto Modificado!</div>
+		{% endif %}
+	</div>
+	<div class="row" style="margin-left: 5%;">
+		<div class="col-md-12">
+			<a href="{{'administrador/articulos' | url}}" class="btn btn-info btn-lg">
+					<span class="glyphicon glyphicon-cog"></span> Administar
+				</a>
+				<a href="{{'administrador/articulos/agregar' | url}}" class="btn btn-info btn-lg">
+					<span class="glyphicon glyphicon-plus"></span> Agregar
+				</a>
+				<a href="historial.php" class="btn btn-info btn-lg">
+					<span class="glyphicon glyphicon-calendar"></span> Historial
+		</a>
+		<a href="estadistica.php" class="btn btn-info btn-lg">
+			<span class="glyphicon glyphicon-stats"></span> Estadistica de Ventas
+		</a>
+		</div>
+	</div>
+
+		<form name="actualizar_articulo" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'administrador/articulos/modificacion/' | url}}{{producto.PR_ID}}">
+
+			<div class="form-group">
+				<label for="id" class="col-sm-2 control-label">ID</label>
+				<div class="col-sm-10">
+					<p>{{producto.PR_ID}}</p>
+					<p><input type="hidden" class="form-control" id="ID" name="ID" value="{{producto.PR_ID}}"></p>
 				</div>
+			</div>
 
 				<div class="form-group">
 					<label for="referencia" class="col-sm-2 control-label">Referencia</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" id="referencia" name="referencia" placeholder="Numero de Referencia" value="<?php echo $row['PR_referencia']; ?>" required>
+							<input type="number" class="form-control" id="referencia" name="referencia" placeholder="Numero de Referencia" value="{{producto.PR_referencia}}" required>
 						</div>
 				</div>
 
 				<div class="form-group">
 					<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del articulo" value="<?php echo $row['PR_nombre']; ?>" required>
+						<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del articulo" value="{{producto.PR_referencia}}" required>
 					</div>
 				</div>
 
@@ -148,12 +87,12 @@
 					<label for="clientela" class="col-sm-2 control-label">Clientela</label>
 					<div class="col-sm-10">
 						<select class="selectpicker" id="clientela" name="clientela" required>
-							<option value="Dama"<?php if($row['PR_clientela']=='Dama') echo 'selected'; ?>>Dama</option>
-					    	<option value="Caballero"<?php if($row['PR_clientela']=='Caballero') echo 'selected'; ?>>Caballero</option>
-						    	<option value="Ninos"<?php if($row['PR_clientela']=='Ninos') echo 'selected'; ?>>Niños</option>
-					    	<option value="Bebes"<?php if($row['PR_clientela']=='Bebes') echo 'selected'; ?>>Bebés</option>
-					    	<option value="Hogar"<?php if($row['PR_clientela']=='Hogar') echo 'selected'; ?>>Hogar</option>
-								<option value="Otros"<?php if($row['PR_clientela']=='Otros') echo 'selected'; ?>>Otros</option>
+							<option value="Dama"{% if producto.PR_clientela == "Dama" %} selected>{% else %}>{% endif %}Dama</option>
+					    	<option value="Caballero"{% if producto.PR_clientela == "Caballero" %} selected>{% else %}>{% endif %}Caballero</option>
+						    	<option value="Ninos"{% if producto.PR_clientela == "Ninos" %} selected>{% else %}>{% endif %}Niños</option>
+					    	<option value="Bebes"{% if producto.PR_clientela == "Bebes" %} selected>{% else %}>{% endif %}Bebés</option>
+					    	<option value="Hogar"{% if producto.PR_clientela == "Hogar" %} selected>{% else %}>{% endif %}Hogar</option>
+								<option value="Otros"{% if producto.PR_clientela == "Otros" %} selected>{% else %}>{% endif %}Otros</option>
 						</select>
 					</div>
 				</div>
@@ -163,14 +102,14 @@
 					<label for="categoria" class="col-sm-2 control-label">Categoria</label>
 					<div class="col-sm-10">
 						<select class="selectpicker" id="categoria" name="categoria" required>
-							<option value="Ropa intima"<?php if($row['PR_categoria']=='Ropa Intima') echo 'selected'; ?>>Ropa Intima</option>
-					    	<option value="Medias"<?php if($row['PR_categoria']=='Medias<') echo 'selected'; ?>>Medias</option>
-								<option value="Camisa"<?php if($row['PR_categoria']=='Camisa') echo 'selected'; ?>>Camisa</option>
-								<option value="Pantalon"<?php if($row['PR_categoria']=='Pantalon') echo 'selected'; ?>>Pantalon</option>
-								<option value="Falda"<?php if($row['PR_categoria']=='Falda') echo 'selected'; ?>>Falda</option>
-					    	<option value="Pijamas"<?php if($row['PR_categoria']=='Pijama') echo 'selected'; ?>>Pijama</option>
-					    	<option value="Traje de baño"<?php if($row['PR_categoria']=='Traje de Baño') echo 'selected'; ?>>Traje de Baño</option>
-						   	<option value="Accesorio"<?php if($row['PR_categoria']=='Accesorio') echo 'selected'; ?>>Accesorio</option>
+							<option value="Ropa intima"{% if producto.PR_categoria == "intima" %} selected>{% else %}>{% endif %}Ropa Intima</option>
+					    	<option value="Medias"{% if producto.PR_categoria == "Medias" %} selected>{% else %}>{% endif %}Medias</option>
+								<option value="Camisa"{% if producto.PR_categoria == "Camisa" %} selected>{% else %}>{% endif %}Camisa</option>
+								<option value="Pantalon"{% if producto.PR_categoria == "Pantalon" %} selected>{% else %}>{% endif %}Pantalon</option>
+								<option value="Falda"{% if producto.PR_categoria == "Falda" %} selected>{% else %}>{% endif %}Falda</option>
+					    	<option value="Pijamas"{% if producto.PR_categoria == "Pijamas" %} selected>{% else %}>{% endif %}Pijama</option>
+					    	<option value="Traje de baño"{% if producto.PR_categoria == "Traje de baño" %} selected>{% else %}>{% endif %}>Traje de Baño</option>
+						   	<option value="Accesorio"{% if producto.PR_categoria == "Accesorio" %} selected>{% else %}>{% endif %}Accesorio</option>
 						</select>
 					</div>
 				</div>
@@ -179,15 +118,15 @@
 					<label for="talla" class="col-sm-2 control-label">Talla</label>
 					<div class="col-sm-10">
 							<select  class="selectpicker" id="talla" name="talla[]" multiple required>
-							<option value="S" <?php if(strpos($row['PR_talla'], "S")!== false) echo 'selected'; ?>>S</option>
-							<option value="M" <?php if(strpos($row['PR_talla'], "M")!== false) echo 'selected'; ?>>M</option>
-							<option value="L" <?php if(strpos($row['PR_talla'], "L")!== false) echo 'selected'; ?>>L</option>
-							<option value="XL" <?php if(strpos($row['PR_talla'], "XL")!== false) echo 'selected'; ?>>XL</option>
-							<option value="XXL" <?php if(strpos($row['PR_talla'], "XXL")!== false) echo 'selected'; ?>>XXL</option>
-							<option value="3XL" <?php if(strpos($row['PR_talla'], "3XL")!== false) echo 'selected'; ?>>3XL</option>
-							<option value="4XL" <?php if(strpos($row['PR_talla'], "4XL")!== false) echo 'selected'; ?>>4XL</option>
-							<option value="5XL" <?php if(strpos($row['PR_talla'], "5XL")!== false) echo 'selected'; ?>>5XL</option>
-							<option value="6XL" <?php if(strpos($row['PR_talla'], "6XL")!== false) echo 'selected'; ?>>6XL</option>
+							<option value="S"{% if producto.PR_talla == "S" %} selected>{% else %}>{% endif %}S</option>
+							<option value="M"{% if producto.PR_talla == "M" %} selected>{% else %}>{% endif %}M</option>
+							<option value="L"{% if producto.PR_talla == "L" %} selected>{% else %}>{% endif %}L</option>
+							<option value="XL"{% if producto.PR_talla == "XL" %} selected>{% else %}>{% endif %}XL</option>
+							<option value="XXL"{% if producto.PR_talla == "XXL" %} selected>{% else %}>{% endif %}XXL</option>
+							<option value="3XL"{% if producto.PR_talla == "3XL" %} selected>{% else %}>{% endif %}3XL</option>
+							<option value="4XL"{% if producto.PR_talla == "4XL" %} selected>{% else %}>{% endif %}4XL</option>
+							<option value="5XL"{% if producto.PR_talla == "5XL" %} selected>{% else %}>{% endif %}5XL</option>
+							<option value="6XL"{% if producto.PR_talla == "6XL" %} selected>{% else %}>{% endif %}6XL</option>
 						</select>
 					</div>
 				</div>
@@ -195,43 +134,43 @@
 				<div class="form-group">
 					<label for="color" class="col-sm-2 control-label">Color</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="color" name="color" placeholder="Color" value="<?php echo $row['PR_color']; ?>" required>
+						<input type="text" class="form-control" id="color" name="color" placeholder="Color" value="{{producto.PR_color}}" required>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="color" class="col-sm-2 control-label">Marca</label>
+					<label for="marca" class="col-sm-2 control-label">Marca</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="marca" name="marca" placeholder="Marca" value="<?php echo $row['PR_marca']; ?>" required>
+						<input type="text" class="form-control" id="marca" name="marca" placeholder="Marca" value="{{producto.PR_marca}}" required>
 					</div>
 				</div>
 
 
 				<div class="form-group">
-					<label for="color" class="col-sm-2 control-label">Material</label>
+					<label for="material" class="col-sm-2 control-label">Material</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="material" name="material" placeholder="Material" value="<?php echo $row['PR_material']; ?>" required>
+						<input type="text" class="form-control" id="material" name="material" placeholder="Material" value="{{producto.PR_color}}" required>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="color" class="col-sm-2 control-label">Descripcion</label>
+					<label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" value="<?php echo $row['PR_descripcion']; ?>" required>
+						<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" value="{{producto.PR_descripcion}}" required>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
 					<div class="col-sm-10">
-						<p><input type="number" id="color" name="cantidad" required="required" placeholder="0" value="<?php echo $row['PR_cantidad']; ?>" required>Unidades</p>
+						<p><input type="number" id="color" name="cantidad" required="required" placeholder="0" value="{{producto.PR_cantidad}}" required>Unidades</p>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="precio" class="col-sm-2 control-label">Precio por unidad</label>
 					<div class="col-sm-10">
-						<p><input type="number" step="0.01" name="precio" required="required" placeholder="0" value="<?php echo $row['PR_precio']; ?>" required>Unidades</p>
+						<p><input type="number" step="0.01" name="precio" required="required" placeholder="0" value="{{producto.PR_precio}}" required>Unidades</p>
 					</div>
 				</div>
 
@@ -239,25 +178,11 @@
 				<div class="form-group">
 					<label for="archivo" class="col-sm-2 control-label">Imagen .jpeg</label>
 					<div class="col-sm-10">
-						<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/>
-
-						<?php
-						$path = "../archivos/files/".$referencia;
-						if(file_exists($path)){
-							$directorio = opendir($path);
-							while ($archivo = readdir($directorio))
-							{
-								if (!is_dir($archivo)){
-									echo "<div data='".$path."/".$archivo."'><a href='".$path."/".$archivo."' title='Ver Archivo Adjunto'><span class='glyphicon glyphicon-picture'></span></a>";
-									echo "$archivo <a href='#' class='delete' title='Borrar Archivo Adjunto' ><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a></div>";
-									echo "<img src='../archivos/files/$referencia/$archivo' width='300' />";
-								}
-							}
-						}
-
-						?>
+										<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/ required>
+										{{ path }}
 					</div>
 				</div>
+
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
@@ -269,11 +194,4 @@
 			</div>
 		</div>
 	</div>
-	<footer class="footer">
-		<?php
-			require_once '<?php echo BASE_URL;?>assets/footer.php';
-		?>
-	</footer>
-</body>
-</html>
-<!--akareliz@gmail.com-->
+	{% endblock %}

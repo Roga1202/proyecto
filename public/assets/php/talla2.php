@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST);
 $options="";
 if ($_POST["elegido"]=="Ropa intima") {
     $options= '
