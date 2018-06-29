@@ -1,7 +1,11 @@
 {% extends "./administrador/layout.twig" %}
+{% block admin %} Hola Administrador {{admin.AD_primernombre}}  {{admin.AD_primeapellido}}{% endblock %}
 {% block content %}
+	<link rel="stylesheet" href="/assets/css/img.css">
 	<script src="{{'assets/js/combobox3.js' | url}}"></script>
 	<script src="{{'assets/js/combobox4.js' | url}}"></script>
+	<script src="{{'assets/js/precio.js' | url}}"></script>
+
 	<script type="text/javascript">
 			$(document).ready(function() {
 				$('.delete').click(function(){
@@ -68,6 +72,15 @@
 					<p><input type="hidden" class="form-control" id="ID" name="ID" value="{{producto.PR_ID}}"></p>
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label for="id" class="col-sm-2 control-label">ID pedido</label>
+				<div class="col-sm-10">
+					<p>{{producto.PD_ID}}</p>
+					<p><input type="hidden" class="form-control" id="ID_pedido" name="ID_pedido" value="{{producto.PD_ID}}"></p>
+				</div>
+			</div>
+
 
 				<div class="form-group">
 					<label for="referencia" class="col-sm-2 control-label">Referencia</label>
@@ -167,19 +180,51 @@
 					</div>
 				</div>
 
+
 				<div class="form-group">
-					<label for="precio" class="col-sm-2 control-label">Precio por unidad</label>
+					<label for="precio_bruto" class="col-sm-2 control-label">Precio Bruto</label>
 					<div class="col-sm-10">
-						<p><input type="number" step="0.01" name="precio" required="required" placeholder="0" value="{{producto.PR_precio}}" required>Unidades</p>
+						<p><input type="text" step="0.01" name="precio_bruto" required="required" placeholder="00,00" onChange="calculo();">Bsf</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="ganancia" class="col-sm-2 control-label">Ganancia</label>
+					<div class="col-sm-10">
+						<p><input type="text" step="0.01" name="ganancia" required="required" placeholder="00,00" readonly>Bsf</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="precio_estimado" class="col-sm-2 control-label">Total</label>
+					<div class="col-sm-10">
+						<p><input type="text" step="0.01" name="precio_estimado" required="required" placeholder="00,00" readonly>Bsf</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="precio" class="col-sm-2 control-label">Precio Final</label>
+					<div class="col-sm-10">
+						<p><input type="text" step="0.01" name="precio" required="required" value="{{producto.PR_precio}}" placeholder="00,00">Bsf</p>
 					</div>
 				</div>
 
 
+				{% if producto.PR_foto %}
+					<div class="form-group">
+						<div class="col-sm-10">
+							<div class="img-fluid">
+								<img src="{{'' | url}}{{producto.PR_foto}}" alt="">
+							</div>
+						</div>
+					</div>
+				{% endif %}
+
 				<div class="form-group">
 					<label for="archivo" class="col-sm-2 control-label">Imagen .jpeg</label>
 					<div class="col-sm-10">
-										<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/ required>
-										{{ path }}
+						<input name="archivo[]" id="archivo[]" multiple="" class="form-control" accept="image/jpg" type="file"/ required>
+
 					</div>
 				</div>
 

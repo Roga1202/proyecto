@@ -7,7 +7,7 @@
 
 
   if($num_arrayfoto>0){
-    $directorio='../../archivos/files/'.$referencia.'/';
+    $directorio='assets/archivos/files/'.$id.'/';
     foreach ($foto as $key => $value){
       if ($contador != $num_arrayfoto-1){
       $arrayfoto=$directorio .= $arrayfoto .= $value.' ';

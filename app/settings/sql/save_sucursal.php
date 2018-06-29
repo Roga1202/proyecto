@@ -44,7 +44,7 @@
 			  <span class="icon-bar"></span>
 			  <span class="icon-bar"></span>
 			</button>
-			<div class="col-md-2 navbar-brand"><img src="images/branda.jpg"></div>
+			images/brand.jpg<div class="col-md-2 navbar-brand"><img src="assets/images/branda.jpg"></div>
 		  </div>
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">

@@ -1,0 +1,62 @@
+{% extends "./administrador/layout.twig" %}
+{% block admin %} Hola Administrador {{admin.AD_primernombre}}  {{admin.AD_primeapellido}}{% endblock %}
+{% block content %}
+<script src="{{'assets/js/ver_pedidos.js' | url}}"></script>
+<script src="{{'assets/js/jquery-3.1.1.min.js' | url}}"></script>
+<script src="{{'assets/js/jquery.dataTables.min.js' | url}}"></script>
+<link href="{{'assets/css/jquery.dataTables.min.css' | url}}" rel="stylesheet">
+	<div class="container">
+		<div class="row">
+  			<div class="col-md-12">
+				<h2 style="text-align:center">Proveedores de El Surtidor de la frontera C.A</h2>
+			</div>
+
+  		</div>
+
+			<div class="row" style="margin-left: 5%;">
+				<div class="col-md-12">
+          <a href="{{'administrador/pedido' | url}}" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-calendar"></span> Historial
+          </a>
+						<a href="{{'administrador/pedido/agregar' | url}}" class="btn btn-info btn-lg">
+							<span class="glyphicon glyphicon-plus"></span> Agregar
+						</a>
+				</div>
+			</div>
+
+  		<br>
+
+		<div class="row table-responsive">
+			<div class="col-md-12">
+				<table class="display" id="mitabla">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre Pedido</th>
+							<th>Proveedor ID</th>
+							<th>Talla</th>
+							<th>Marca</th>
+							<th>Material</th>
+							<th>Cantidad</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+				</table>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		{% endblock %}

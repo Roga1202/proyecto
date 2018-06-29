@@ -1,0 +1,85 @@
+{% extends 'user/layout.twig' %}
+{% block user %} Hola {{user.CLWEB_primernombre}}  {{user.CLWEB_primerapellido}}{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="col-md-2">
+			<div class="panel" style="margin-top: 5px">
+				<h2>Ropa</h2>
+				<form>
+					<input type="checkbox">Hombre<br>
+					<input type="checkbox">Mujer<br>
+					<br>
+					<input type="checkbox">Franela<br>
+					<input type="checkbox">Camisa<br>
+					<input type="checkbox">Sueter<br>
+					<input type="checkbox">Chaqueta<br>
+					<input type="checkbox">Pantalon<br>
+					<input type="checkbox">Ropa Interior<br><br>
+					<input type="submit" value="Buscar">
+				</form>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="row">
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'/assets/images/muestra1.jpg' | url}}">
+						<h4>Sueter Verde Algodon</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra4.jpg' | url}}">
+						<h4>Sueter Tejido Negro</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra5.jpg' | url}}">
+						<h4>Franela Algodon Hombre</h4>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 articulo">
+					<a href="#">
+						<img class="img-responsive" src="{{'assets/images/muestra3.jpg' | url}}">
+						<h4>Franela para dama</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra7.jpg' | url}}">
+						<h4>Franela Estampado</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra8' | url}}.jpg">
+						<h4>Pantalon Casual Ajustado Marino</h4>
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra6' | url}}.jpg">
+						<h4>Pantalon Casual Beige</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra0' | url}}.jpg">
+						<h4>Sueter Navideño</h4>
+					</a>
+				</div>
+				<div class="col-md-4 articulo">
+					<a href="">
+						<img class="img-responsive" src="{{'assets/images/muestra2' | url}}.jpg">
+						<h4>Sueter Verde 02</h4>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}

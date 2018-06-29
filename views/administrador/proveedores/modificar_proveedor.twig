@@ -1,0 +1,139 @@
+{% extends "./administrador/layout.twig" %}
+{% block admin %} Hola Administrador {{admin.AD_primernombre}}  {{admin.AD_primeapellido}}{% endblock %}
+{% block content %}
+	<link rel="stylesheet" href="/assets/css/img.css">
+	<script src="{{'assets/js/combobox3.js' | url}}"></script>
+	<script src="{{'assets/js/combobox4.js' | url}}"></script>
+	<script type="text/javascript">
+			$(document).ready(function() {
+				$('.delete').click(function(){
+					var parent = $(this).parent().attr('referencia');
+					var service = $(this).parent().attr('data');
+					var dataString = 'referencia='+service;
+
+					$.ajax({
+						type: "POST",
+						url: "../private/del_file.php",
+						data: dataString,
+						success: function() {
+							location.reload();
+						}
+					});
+				});
+			});
+		</script>
+
+	<script language="JavaScript">
+			function pregunta(){
+			    if (confirm('¿Estas seguro de modificar este articulo?')){
+			       document.actualizar_articulo.submit()
+    }
+}
+</script>
+	<div class="container">
+		<div class="row">
+  			<div class="col-md-12">
+  				<h2><center>Modificar Articulo</center></h2>
+
+
+	<div class="row">
+		{% if errors  %}
+		{% include('partials/errors.twig') %}
+		{% endif %}
+		{% if result %}
+				<div class="alert alert-success">Producto Modificado!</div>
+		{% endif %}
+	</div>
+
+
+	<div class="row" style="margin-left: 5%;">
+		<div class="col-md-12">
+			<a href="{{'administrador/proveedores' | url}}" class="btn btn-info btn-lg">
+					<span class="glyphicon glyphicon-cog"></span> Administar
+				</a>
+				<a href="{{'administrador/proveedores/agregar' | url}}" class="btn btn-info btn-lg">
+					<span class="glyphicon glyphicon-plus"></span> Agregar
+				</a>
+		</div>
+	</div>
+
+	<form name="agregar_proveedor" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'administrador/proveedor/modificacion/' | url}}{{proveedor.PRV_ID}}" autocomplete="off">
+		<br>
+
+	<div class="form-group">
+		<label for="id" class="col-sm-2 control-label">ID</label>
+		<div class="col-sm-10">
+			<p>{{proveedor.PRV_ID}}</p>
+			<p><input type="hidden" class="form-control" id="ID" name="ID" value="{{proveedor.PRV_ID}}"></p>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="fiscal" class="col-sm-2 control-label">Numero Fiscal</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="fiscal" name="fiscal" value="{{proveedor.PRV_RM}}" required>
+			</div>
+	</div>
+
+	<div class="form-group">
+		<label for="first_name" class="col-sm-2 control-label">Primer Nombre</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="first_name" name="first_name" value="{{proveedor.PRV_primernombre}}" maxlength="20" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="others_names" class="col-sm-2 control-label">Segundo Nombre</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="others_names" name="others_names" value="{{proveedor.PRV_otronombre}}" maxlength="20" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="last_name" class="col-sm-2 control-label">Primer Apellido</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="last_name" name="last_name" value="{{proveedor.PRV_primerapellido}}" maxlength="20" required>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label for="other_surnames" class="col-sm-2 control-label">Otros Apellidos</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="other_surnames" name="other_surnames" value="{{proveedor.PRV_segundoapellido}}" maxlength="20" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="Correo" class="col-sm-2 control-label">Correo</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="correo" maxlength="30" value="{{proveedor.PRV_correo}}" name="correo"required>
+			</div>
+	</div>
+
+	<div class="form-group">
+		<label for="numero" class="col-sm-2 control-label">Telefono</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" id="numero" value="{{proveedor.PRV_telefono}}" maxlength="11" name="numero"required>
+			</div>
+	</div>
+
+
+<div class="form-group">
+	<label for="Productos" class="col-sm-2 control-label">Productos</label>
+	<div class="col-sm-10">
+		<input type="text" class="form-control" id="Productos" name="Productos" value="{{proveedor.PRV_producto}}" maxlength="20" required>
+	</div>
+</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<a href="administracion_articulos.php" class="btn btn-default">Regresar</a>
+			<input type="submit" class="btn btn-primary" value="Guardar">
+		</div>
+	</div>
+	</form>
+</div>
+</div>
+	{% endblock %}

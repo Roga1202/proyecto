@@ -44,38 +44,37 @@ $capsule->bootEloquent();
 $route = $_GET['route'] ?? '/';
 $router = new RouteCollector();
 
+//Filtro
+
+$router->filter('nousuario', function(){
+  if (!isset($_SESSION['userId']) and !isset($_SESSION['permisos'])) {
+    header('Location:' . BASE_URL . '');
+    return false;
+  }
+});
+
+
+
+
+$router->group(['before' => 'nousuario'], function ($router) {
+  $router->controller('/user', App\controllers\user\UserController::class);
+  $router->controller('/administrador', App\Controllers\administrador\IndexController::class);
+  $router->controller('/administrador/articulos', App\Controllers\administrador\articulos\ArticuloController::class);
+  $router->controller('/administrador/proveedor', App\Controllers\administrador\proveedor\ProveedorController::class);
+  $router->controller('/administrador/usuarios', App\Controllers\administrador\usuarios\UserController::class);
+  $router->controller('/administrador/pedido', App\Controllers\administrador\pedido\PedidoController::class);
+
+});
+
+
+
+
 // Inicio
 $router->controller('/', App\controllers\IndexController::class);
 
 // Sesion
 $router->controller('/sesion', App\controllers\SesionController::class);
 
-// User
-$router->controller('/user', App\controllers\user\UserController::class);
-
-
-//Administrador
-$router->controller('/administrador', App\Controllers\administrador\IndexController::class);
-
-//Articulos
-$router->controller('/administrador/articulos', App\Controllers\administrador\articulos\ArticuloController::class);
-
-//Usuaios
-$router->controller('/administrador/usuarios', App\Controllers\administrador\usuarios\UserController::class);
-
-
-//MODIFICACION DE ARTICULO
-$router->get('/administrador/articulo/modificacion?referencia={referencia}', function(){
-  require '../settings/sql/conexion.php';
-
-  $referencia= str_replace('/admin/articulo/modificacion?referencia=', '', $_GET['route']);
-
-  $sql = "SELECT * FROM producto WHERE PR_referencia= '$referencia'";
-  $resultado = $pdo->query($sql);
-  $row = $resultado->fetch(MYSQLI_ASSOC);
-
-  return render('./modificar_articulo.php', ['row' =>$row , 'referencia' => $referencia]);
-});
 
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());

@@ -8,13 +8,12 @@
 	require_once '../../../app/settings/sql/conexion.php';
 
 	/* Nombre de La Tabla */
-	$sTabla = "producto";
-
+	$sTabla = "proveedor";
 	/* Array que contiene los nombres de las columnas de la tabla*/
-	$aColumnas = array('PR_ID' ,'PR_referencia', 'PR_nombre', 'PR_clientela','PR_categoria', 'PR_cantidad','PR_precio' );
+	$aColumnas = array('PRV_ID' ,'PRV_RM', 'PRV_primernombre', 'PRV_primerapellido','PRV_producto', 'PRV_inicio');
 
 	/* columna indexada */
-	$sIndexColumn = "PR_ID";
+	$sIndexColumn = "PRV_ID";
 
 	// Paginacion
 	$sLimit = "";
@@ -128,8 +127,8 @@
 				$row[] = $aRow[ $aColumnas[$i] ];
 			}
 		}
-		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/modificacion/".$aRow['PR_ID']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		$row[] = "<td><a href='http://elsurtidor.com/administrador/articulos/eliminar/".$aRow['PR_ID']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/proveedor/modificacion/".$aRow['PRV_ID']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/proveedor/eliminar/".$aRow['PRV_ID']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
 
 		$output['aaData'][] = $row;
 	}

@@ -121,6 +121,14 @@ class IndexController extends BaseController {
   }
 
   public function getCatalogo(){
+    if ($_SESSION['permiso']==2) {
+      $userId= $_SESSION['userId'];
+      $user= \App\Models\Users::query()->where('CLWEB_ID', '=', $userId)->first();
+      if($user){
+        return $this->render('user\catalogo.twig',['user' => $user]);
+        header('Location:' . BASE_URL . 'catalago');
+      }
+    }
     return $this->render('/catalogo.twig');
   }
 

@@ -1,0 +1,103 @@
+{% extends "./administrador/layout.twig" %}
+{% block admin %} Hola Administrador {{admin.AD_primernombre}}  {{admin.AD_primeapellido}}{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="col-md-12">
+
+			<div class="row" style="margin-left: 5%;">
+				<div class="col-md-12">
+					<a href="{{'administrador/proveedor' | url}}" class="btn btn-info btn-lg">
+							<span class="glyphicon glyphicon-cog"></span> Administar
+						</a>
+						<a href="{{'administrador/proveedor/agregar' | url}}" class="btn btn-info btn-lg">
+							<span class="glyphicon glyphicon-plus"></span> Agregar
+						</a>
+				</div>
+			</div>
+
+			<h2><center>Agregar Proveedores.</center></h2>
+
+
+			<div class="row">
+				{% if errors  %}
+				{% include('partials/errors.twig') %}
+				{% endif %}
+				{% if result %}
+		        <div class="alert alert-success">Proveedor Guardado!</div>
+		    {% endif %}
+			</div>
+
+
+			<form name="agregar_proveedor" class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{'administrador/proveedor/guardado' | url}}" autocomplete="off">
+  			<br>
+
+
+			<div class="form-group">
+				<label for="fiscal" class="col-sm-2 control-label">Numero Fiscal</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="fiscal" name="fiscal" required>
+					</div>
+			</div>
+
+			<div class="form-group">
+				<label for="first_name" class="col-sm-2 control-label">Primer Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="first_name" name="first_name" maxlength="20" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="others_names" class="col-sm-2 control-label">Segundo Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="others_names" name="others_names" maxlength="20" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="last_name" class="col-sm-2 control-label">Primer Apellido</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="last_name" name="last_name" maxlength="20" required>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label for="other_surnames" class="col-sm-2 control-label">Otros Apellidos</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="other_surnames" name="other_surnames" maxlength="20" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+		    <label for="Correo" class="col-sm-2 control-label">Correo</label>
+		      <div class="col-sm-10">
+		        <input type="email" class="form-control" id="correo" maxlength="30" name="correo"required>
+		      </div>
+		  </div>
+
+
+			<div class="form-group">
+		    <label for="numero" class="col-sm-2 control-label">Telefono</label>
+		      <div class="col-sm-10">
+		        <input type="number" class="form-control" id="numero" maxlength="11" name="numero"required>
+		      </div>
+		  </div>
+
+
+		<div class="form-group">
+			<label for="Productos" class="col-sm-2 control-label">Productos</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="Productos" name="Productos" maxlength="20" required>
+			</div>
+		</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<a href="administracion_articulos.php" class="btn btn-default">Regresar</a>
+					<input type="submit" class="btn btn-primary" value="Guardar">
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	{% endblock %}

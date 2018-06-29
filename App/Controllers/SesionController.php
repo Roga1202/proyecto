@@ -73,7 +73,7 @@ class SesionController extends BaseController {
 
     $validator->add( array(
       'correo' => 'Required  | email | MaxLength(30)',
-      'password' => 'Required | AlphaNumHyphen | MaxLength(20)',
+      'password' => 'Required | MaxLength(20)',
     ));
 
     if ($validator->validate($_POST)) {

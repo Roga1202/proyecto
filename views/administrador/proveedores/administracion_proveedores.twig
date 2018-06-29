@@ -1,32 +1,26 @@
 {% extends "./administrador/layout.twig" %}
 {% block admin %} Hola Administrador {{admin.AD_primernombre}}  {{admin.AD_primeapellido}}{% endblock %}
 {% block content %}
-<script src="{{'assets/js/tabla_administracion.js' | url}}"></script>
+<script src="{{'assets/js/tabla_administracion_proveedores.js' | url}}"></script>
 <script src="{{'assets/js/jquery-3.1.1.min.js' | url}}"></script>
 <script src="{{'assets/js/jquery.dataTables.min.js' | url}}"></script>
 <link href="{{'assets/css/jquery.dataTables.min.css' | url}}" rel="stylesheet">
 	<div class="container">
 		<div class="row">
   			<div class="col-md-12">
-				<h2 style="text-align:center">Articulos de El Surtidor de la frontera C.A</h2>
+				<h2 style="text-align:center">Proveedores de El Surtidor de la frontera C.A</h2>
 			</div>
 
   		</div>
 
   		<div class="row" style="margin-left: 5%;">
   			<div class="col-md-12">
-  				<a href="{{'administrador/articulos' | url}}" class="btn btn-info btn-lg">
+  				<a href="{{'administrador/proveedor' | url}}" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-cog"></span> Administar
 		        </a>
-		        <a href="{{'administrador/articulos/agregar' | url}}" class="btn btn-info btn-lg">
+		        <a href="{{'administrador/proveedor/agregar' | url}}" class="btn btn-info btn-lg">
 		        	<span class="glyphicon glyphicon-plus"></span> Agregar
 		        </a>
-		        <a href="historial.php" class="btn btn-info btn-lg">
-		        	<span class="glyphicon glyphicon-calendar"></span> Historial
-				</a>
-				<a href="estadistica.php" class="btn btn-info btn-lg">
-					<span class="glyphicon glyphicon-stats"></span> Estadistica de Ventas
-				</a>
   			</div>
   		</div>
 
@@ -38,12 +32,11 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Referencia</th>
+							<th>Numero Fiscal</th>
 							<th>Nombre</th>
-							<th>Clientela</th>
-							<th>Categoria</th>
-							<th>Cantidad</th>
-							<th>Precio</th>
+							<th>Apellido</th>
+							<th>Producto</th>
+							<th>Inicio</th>
 							<th></th>
 							<th></th>
 						</tr>
