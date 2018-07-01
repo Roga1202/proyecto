@@ -127,8 +127,8 @@
 				$row[] = $aRow[ $aColumnas[$i] ];
 			}
 		}
-		$row[] = "<td><a href='http://elsurtidor.com/administrador/proveedor/modificacion/".$aRow['PD_ID']."'><span class='glyphicon glyphicon-eye-open'></span></a></td>";
-		$row[] = "<td><a href='http://elsurtidor.com/administrador/proveedor/eliminar/".$aRow['PD_ID']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/pedido/ver/".$aRow['PD_ID']."'><span class='glyphicon glyphicon-eye-open'></span></a></td>";
+		$row[] = "<td><a href='http://elsurtidor.com/administrador/pedido/eliminar/".$aRow['PD_ID']."' <span class='glyphicon glyphicon-trash'></span></a></td>";
 
 		$output['aaData'][] = $row;
 	}

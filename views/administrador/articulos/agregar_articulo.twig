@@ -52,9 +52,10 @@
 				<label for="pedido" class="col-sm-2 control-label">Pedido</label>
 				<div class="col-sm-10">
 					<select class="selectpicker" id="pedido" name="pedido" required>
-					{% for pedido in pedidos %}
-						<p>{{pedido.PD_ID}}</p>
+					{% for pedido in pedidos if pedido.PD_estado == "Pendiente" %}
 						<option value="{{pedido.PD_ID}}">{{pedido.PD_ID}}.-{{pedido.PD_nombre}}</option>
+					{% else %}
+						<option value="">No hay Pedidos por procesar</option>
 			    {% endfor %}
 					</select>
 				</div>

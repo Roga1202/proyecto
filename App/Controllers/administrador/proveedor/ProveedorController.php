@@ -34,7 +34,7 @@ class ProveedorController extends BaseController {
         'last_name'=> 'Required | AlphaNumeric | MaxLength(20)',//VALIDACION PENDIENTE
         'other_surnames'=> 'Required | AlphaNumeric | MaxLength(20)',//VALIDACION PENDIENTE
         'correo'=> 'Required | email',//VALIDACION PENDIENTE
-        'numero'=> 'Integer',//VALIDACION PENDIENTE
+        'numero'=> 'Required | Integer',//VALIDACION PENDIENTE
         'Productos'=> 'Required | AlphaNumeric',
       )
     );
@@ -116,7 +116,7 @@ class ProveedorController extends BaseController {
         'last_name'=> 'Required | AlphaNumeric | MaxLength(20)',//VALIDACION PENDIENTE
         'other_surnames'=> 'Required | AlphaNumeric | MaxLength(20)',//VALIDACION PENDIENTE
         'correo'=> 'Required | email',//VALIDACION PENDIENTE
-        'numero'=> 'Integer',//VALIDACION PENDIENTE
+        'numero'=> 'Required',//VALIDACION PENDIENTE
         'Productos'=> 'Required | AlphaNumeric',
     ));
 

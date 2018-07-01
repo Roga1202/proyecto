@@ -53,6 +53,13 @@ $router->filter('nousuario', function(){
   }
 });
 
+$router->filter('usuario', function(){
+  if (!isset($_SESSION['userId']) and ($_SESSION['permisos']==1)) {
+    header('Location:' . BASE_URL . 'user');
+    return false;
+  }
+});
+
 
 
 
@@ -63,10 +70,7 @@ $router->group(['before' => 'nousuario'], function ($router) {
   $router->controller('/administrador/proveedor', App\Controllers\administrador\proveedor\ProveedorController::class);
   $router->controller('/administrador/usuarios', App\Controllers\administrador\usuarios\UserController::class);
   $router->controller('/administrador/pedido', App\Controllers\administrador\pedido\PedidoController::class);
-
 });
-
-
 
 
 // Inicio

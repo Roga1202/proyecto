@@ -51,7 +51,7 @@ class PedidoController extends BaseController {
       $material= $_POST['material'];
       $cantidad=$_POST['cantidad'];
       $usuario=$_SESSION['userId'];
-
+      $estado="Pendiente";
 
 
       $pedido= new \App\Models\Pedido([
@@ -59,9 +59,10 @@ class PedidoController extends BaseController {
         'PRV_ID'=>$proveedor,
         'PD_nombre'=> $nombre,
         'PD_talla'=> $talla,
-        'PD_mmarca'=> $marca,
+        'PD_marca'=> $marca,
         'PD_material'=> $material,
         'PD_cantidad'=> $cantidad,
+        'PD_estado'=> $estado,
         'AD_ID'=> $usuario,
       ]);
       $pedido->save();
@@ -69,7 +70,12 @@ class PedidoController extends BaseController {
     } else{
       $errors= $validator->getmessages();
     }
+      $ID=$pedido->id;
 
+      $pedido= \App\Models\Pedido::query()->where('PD_ID', $ID)->first();
+      $proveedor= \App\Models\Proveedor::query()->where('PRV_ID', $proveedor)->first();
+
+      require_once "assets/php/prueba.php";
       return $this->render('administrador/pedido/agregar_pedido.twig',[
         'result' => $result,
         'errors' => $errors,
@@ -77,10 +83,12 @@ class PedidoController extends BaseController {
   }
 
 
-  public function geteliminar($referencia){
+  public function getver($referencia){
       $ID=$referencia;
-      $proveedor= \App\Models\Pedido::query()->where('PD_ID', $ID)->delete();
-
+      $pedido= \App\Models\Pedido::query()->where('PD_ID', $ID)->first();
+      $id_proveedor=$pedido->PRV_ID;
+      $proveedor= \App\Models\Proveedor::query()->where('PRV_ID', $id_proveedor)->first();
+      require_once "assets/php/prueba.php";
     return $this->render('/administrador/pedido/ver_pedidos.twig');
   }
 

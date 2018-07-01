@@ -10,7 +10,7 @@ class Pedido extends Model{
   const UPDATED_AT = 'PD_actualizacion';
 
   protected $table= 'pedido';
-  protected $fillable = ['PRV_ID', 'AD_ID','PD_nombre','PD_talla','PD_marca','PD_material','PD_cantidad'];
+  protected $fillable = ['PRV_ID', 'AD_ID','PD_estado','PD_nombre','PD_talla','PD_marca','PD_material','PD_cantidad'];
 
 }
 

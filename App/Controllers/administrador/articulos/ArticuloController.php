@@ -68,7 +68,7 @@ class ArticuloController extends BaseController {
 
 
       require_once "assets/php/arraytalla.php";
-
+      var_dump($pedido  );
       $producto= new \App\Models\Producto([
 
         'PR_referencia'=>$referencia,
@@ -87,6 +87,9 @@ class ArticuloController extends BaseController {
         'AD_ID'=> $usuario,
       ]);
       $producto->save();
+      $producto= \App\Models\Pedido::query()->where('PD_ID', $pedido)->update([
+        'PD_estado'=> "Procesado",
+        ]);
       $result=true;
     } else{
       $errors= $validator->getmessages();

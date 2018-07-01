@@ -36,7 +36,6 @@
 				<div class="col-sm-10">
 					<select class="selectpicker" id="proveedor" name="proveedor" required>
 					{% for proveedor in proveedores %}
-						<p>{{proveedor.PRV_ID}}</p>
 						<option value="{{proveedor.PRV_ID}}">{{proveedor.PRV_ID}}.-{{proveedor.PRV_primernombre}} {{proveedor.PRV_primerapellido}}</option>
 			    {% endfor %}
 					</select>
